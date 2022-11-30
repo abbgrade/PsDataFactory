@@ -8,5 +8,5 @@
     VariablesToExport = '*'
     AliasesToExport = '*'
     DefaultCommandPrefix = 'Adf'
-    RequiredModules = @()
+    RequiredModules = @('PsDac')
 }

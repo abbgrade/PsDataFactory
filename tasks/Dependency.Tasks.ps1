@@ -4,6 +4,7 @@ task InstallBuildDependencies -Jobs {
 }
 
 task InstallTestDependencies -Jobs {
+    Install-Module PsDac -Scope CurrentUser -ErrorAction Stop -Verbose
 }
 
 task InstallReleaseDependencies -Jobs {}

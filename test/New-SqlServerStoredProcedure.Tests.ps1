@@ -8,9 +8,10 @@ Describe New-SqlServerStoredProcedure {
 
     BeforeEach {
         $Pipeline = New-AdfPipeline -Name MyPipeline -Description Test
+        $LinkedServiceReference = New-AdfLinkedServiceReference -Name MyLinkedService
     }
 
     It works {
-        New-AdfSqlServerStoredProcedure -Name MyAcitivity -ErrorAction Stop
+        New-AdfSqlServerStoredProcedure -Name MyAcitivity -ErrorAction Stop -LinkedServiceReference $LinkedServiceReference -StoredProcedureExpression usp_doit
     }
 }

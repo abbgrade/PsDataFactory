@@ -8,7 +8,8 @@ Describe Add-Activity {
 
     BeforeEach {
         $Pipeline = New-AdfPipeline -Name MyPipeline -Description Test
-        $Activity = New-AdfSqlServerStoredProcedure -Name MyAcitivity
+        $LinkedServiceReference = New-AdfLinkedServiceReference -Name MyLinkedService
+        $Activity = New-AdfSqlServerStoredProcedure -Name MyAcitivity -LinkedServiceReference $LinkedServiceReference -StoredProcedureExpression usp_doit
     }
 
     It works {

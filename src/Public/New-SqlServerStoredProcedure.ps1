@@ -6,6 +6,12 @@ function New-SqlServerStoredProcedure {
         [ValidateNotNullOrEmpty()]
         [string] $Name,
 
+        [Parameter( Mandatory )]
+        [PSCustomObject] $LinkedServiceReference,
+
+        [Parameter( Mandatory )]
+        [string] $StoredProcedureExpression,
+
         [Parameter()]
         [ValidateNotNullOrEmpty()]
         $Timeout = '0.12:00:00',
@@ -14,9 +20,14 @@ function New-SqlServerStoredProcedure {
         $DependsOn = @()
     )
 
-    $activity = New-Activity -Name $Name -Type Copy -Timeout:$Timeout -DependsOn:$DependsOn
+    $activity = New-Activity -Name $Name -Type SqlServerStoredProcedure -Timeout:$Timeout -DependsOn:$DependsOn
 
-    Write-Error 'New-SqlServerStoredProcedure is not implemented'
+    $activity.typeProperties | Add-Member storedProcedureName ([PSCustomObject] @{
+        value = $StoredProcedureExpression
+        type = 'Expression'
+    })
+
+    $activity | Add-Member linkedServiceName $LinkedServiceReference
 
     Write-Output $activity
 }

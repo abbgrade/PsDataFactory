@@ -1,4 +1,5 @@
 function New-TabularTranslator {
+    
     [CmdletBinding()]
     param ()
 

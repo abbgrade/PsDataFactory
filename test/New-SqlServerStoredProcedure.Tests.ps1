@@ -1,6 +1,7 @@
 #Requires -Modules @{ ModuleName='Pester'; ModuleVersion='5.0.0' }
 
-Describe New-SqlServerStoredProcedure -Tag InstanceIndependent {
+Describe New-SqlServerStoredProcedure {
+    
     BeforeAll {
         Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -Force -ErrorAction Stop
     }

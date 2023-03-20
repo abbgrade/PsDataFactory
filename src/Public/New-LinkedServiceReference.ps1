@@ -1,4 +1,5 @@
 function New-LinkedServiceReference {
+    
     [CmdletBinding()]
     param (
         [Parameter( Mandatory )]
@@ -16,5 +17,6 @@ function New-LinkedServiceReference {
     if ( $Parameters ) {
         $reference | Add-Member parameters ($Parameters)
     }
+
     Write-Output $reference
 }

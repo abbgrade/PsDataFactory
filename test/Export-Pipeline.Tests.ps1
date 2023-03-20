@@ -1,6 +1,7 @@
 #Requires -Modules @{ ModuleName='Pester'; ModuleVersion='5.0.0' }, PsDac
 
-Describe Export-Pipeline -Tag InstanceIndependent {
+Describe Export-Pipeline {
+    
     BeforeAll {
         Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -Force -ErrorAction Stop
     }

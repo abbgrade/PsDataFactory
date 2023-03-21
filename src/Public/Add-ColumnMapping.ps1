@@ -1,4 +1,5 @@
 function Add-ColumnMapping {
+
     [CmdletBinding()]
     param (
         [Parameter(Mandatory, ValueFromPipeline)]
@@ -10,6 +11,7 @@ function Add-ColumnMapping {
         [Parameter(Mandatory, Position=1)]
         [string] $Sink
     )
+    
     process {
         $Translator.columnMappings | Add-Member $Source $Sink
     }

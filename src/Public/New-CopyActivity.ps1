@@ -15,7 +15,7 @@ function New-CopyActivity {
         $SourceType,
 
         [Parameter()]
-        $SourceQueryTimeout, # = '02:00:00',
+        $SourceQueryTimeout,
 
         [Parameter( Mandatory )]
         [ValidateNotNullOrEmpty()]
@@ -26,7 +26,7 @@ function New-CopyActivity {
         $SinkType,
 
         [Parameter()]
-        $SinkWriteBehavior, # = 'insert',
+        $SinkWriteBehavior,
 
         [Parameter()]
         [switch] $SqlWriterUseTableLock,
@@ -46,11 +46,13 @@ function New-CopyActivity {
 
     $activity.typeProperties | Add-Member source ([PSCustomObject] @{
             type = $SourceType
+            partitionOption = "None"
         })
 
     $activity.typeProperties | Add-Member sink ([PSCustomObject] @{
-            type = $SinkType
-        })
+        type = $SinkType
+    })
+    $activity.typeProperties | Add-Member enableStaging $false
 
     if ( $SourceQueryTimeout ) {
         $activity.typeProperties.source | Add-Member queryTimeout $SourceQueryTimeout

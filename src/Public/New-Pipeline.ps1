@@ -6,7 +6,7 @@ function New-Pipeline {
         [ValidateNotNullOrEmpty()]
         [string] $Name,
 
-        [Parameter( Mandatory )]
+        [Parameter()]
         [ValidateNotNullOrEmpty()]
         [string] $Description,
 

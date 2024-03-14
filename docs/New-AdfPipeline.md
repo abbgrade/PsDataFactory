@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AdfPipeline [-Name] <String> [-Description] <String> [[-Activities] <PSObject[]>]
+New-AdfPipeline [-Name] <String> [[-Description] <String>] [[-Activities] <PSObject[]>]
  [[-Parameters] <PSObject>] [[-Variables] <PSObject>] [[-FolderName] <String>] [<CommonParameters>]
 ```
 
@@ -54,7 +54,7 @@ Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False

@@ -11,7 +11,11 @@ Describe New-SqlServerStoredProcedure {
         $LinkedServiceReference = New-AdfLinkedServiceReference -Name MyLinkedService
     }
 
-    It works {
+    It works-for-expression {
         New-AdfSqlServerStoredProcedure -Name MyAcitivity -ErrorAction Stop -LinkedServiceReference $LinkedServiceReference -StoredProcedureExpression usp_doit
+    }
+
+    It works-for-name {
+        New-AdfSqlServerStoredProcedure -Name MyAcitivity -ErrorAction Stop -LinkedServiceReference $LinkedServiceReference -StoredProcedureName usp_doit
     }
 }

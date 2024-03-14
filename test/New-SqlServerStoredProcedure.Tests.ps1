@@ -12,10 +12,23 @@ Describe New-SqlServerStoredProcedure {
     }
 
     It works-for-expression {
-        New-AdfSqlServerStoredProcedure -Name MyAcitivity -ErrorAction Stop -LinkedServiceReference $LinkedServiceReference -StoredProcedureExpression usp_doit
+        $activity = New-AdfSqlServerStoredProcedure -Name MyAcitivity -ErrorAction Stop -LinkedServiceReference $LinkedServiceReference -StoredProcedureExpression usp_doit
+        $activity.type | Should -Be 'SqlServerStoredProcedure'
+        $activity.name | Should -Be 'MyAcitivity'
+        $activity.typeProperties | Should -Not -BeNullOrEmpty
+        $activity.typeProperties.storedProcedureName | Should -Not -BeNullOrEmpty
+        $activity.typeProperties.storedProcedureName.type | Should -Be 'Expression'
+        $activity.typeProperties.storedProcedureName.value | Should -Be 'usp_doit'
+        $activity | Should -Not -BeNullOrEmpty
     }
 
     It works-for-name {
-        New-AdfSqlServerStoredProcedure -Name MyAcitivity -ErrorAction Stop -LinkedServiceReference $LinkedServiceReference -StoredProcedureName usp_doit
+        $activity = New-AdfSqlServerStoredProcedure -Name MyAcitivity -ErrorAction Stop -LinkedServiceReference $LinkedServiceReference -StoredProcedureName usp_doit
+        $activity.type | Should -Be 'SqlServerStoredProcedure'
+        $activity.name | Should -Be 'MyAcitivity'
+        $activity.typeProperties | Should -Not -BeNullOrEmpty
+        $activity.typeProperties.storedProcedureName | Should -Not -BeNullOrEmpty
+        $activity.typeProperties.storedProcedureName | Should -Be 'usp_doit'
+        $activity | Should -Not -BeNullOrEmpty
     }
 }

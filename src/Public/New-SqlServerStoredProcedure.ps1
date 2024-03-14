@@ -27,7 +27,7 @@ function New-SqlServerStoredProcedure {
 
     switch ($PSCmdlet.ParameterSetName) {
         Name {
-            $activity.typeProperties | Add-Member storedProcedureName $StoredProcedureExpression
+            $activity.typeProperties | Add-Member storedProcedureName $StoredProcedureName
         }
         Expression {
             $activity.typeProperties | Add-Member storedProcedureName ([PSCustomObject] @{

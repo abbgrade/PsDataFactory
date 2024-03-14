@@ -9,8 +9,11 @@ function New-SqlServerStoredProcedure {
         [Parameter( Mandatory )]
         [PSCustomObject] $LinkedServiceReference,
 
-        [Parameter( Mandatory )]
+        [Parameter( Mandatory, ParameterSetName='Expression' )]
         [string] $StoredProcedureExpression,
+
+        [Parameter( Mandatory, ParameterSetName='Name' )]
+        [string] $StoredProcedureName,
 
         [Parameter()]
         [ValidateNotNullOrEmpty()]
@@ -22,10 +25,20 @@ function New-SqlServerStoredProcedure {
 
     $activity = New-Activity -Name $Name -Type SqlServerStoredProcedure -Timeout:$Timeout -DependsOn:$DependsOn
 
-    $activity.typeProperties | Add-Member storedProcedureName ([PSCustomObject] @{
-        value = $StoredProcedureExpression
-        type = 'Expression'
-    })
+    switch ($PSCmdlet.ParameterSetName) {
+        Name {
+            $activity.typeProperties | Add-Member storedProcedureName $StoredProcedureName
+        }
+        Expression {
+            $activity.typeProperties | Add-Member storedProcedureName ([PSCustomObject] @{
+                value = $StoredProcedureExpression
+                type = 'Expression'
+            })
+        }
+        Default {
+            Write-Error "Unsupported ParameterSet $_"
+        }
+    }
 
     $activity | Add-Member linkedServiceName $LinkedServiceReference
 

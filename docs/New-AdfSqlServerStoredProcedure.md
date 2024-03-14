@@ -12,9 +12,16 @@ schema: 2.0.0
 
 ## SYNTAX
 
+### Expression
 ```
-New-AdfSqlServerStoredProcedure [-Name] <String> [-LinkedServiceReference] <PSObject>
- [-StoredProcedureExpression] <String> [[-Timeout] <Object>] [[-DependsOn] <Object>] [<CommonParameters>]
+New-AdfSqlServerStoredProcedure -Name <String> -LinkedServiceReference <PSObject>
+ -StoredProcedureExpression <String> [-Timeout <Object>] [-DependsOn <Object>] [<CommonParameters>]
+```
+
+### Name
+```
+New-AdfSqlServerStoredProcedure -Name <String> -LinkedServiceReference <PSObject> -StoredProcedureName <String>
+ [-Timeout <Object>] [-DependsOn <Object>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +47,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -55,7 +62,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -70,7 +77,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -81,11 +88,26 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Expression
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StoredProcedureName
+{{ Fill StoredProcedureName Description }}
+
+```yaml
+Type: String
+Parameter Sets: Name
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -100,7 +122,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

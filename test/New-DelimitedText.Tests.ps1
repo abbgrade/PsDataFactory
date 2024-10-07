@@ -11,6 +11,6 @@ Describe New-DelimitedText {
     }
 
     It works {
-        New-AzureDatabricksDeltaLakeTable -Name MyDataset -TableName MyTable -LinkedServiceReference $LinkedServiceReference -ErrorAction Stop
+        New-AdfDelimitedTextDataset -Name MyDataset -TableName MyTable -LinkedServiceReference $LinkedServiceReference -ErrorAction Stop
     }
 }

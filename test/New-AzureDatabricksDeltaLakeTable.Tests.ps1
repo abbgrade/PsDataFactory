@@ -11,6 +11,6 @@ Describe New-AzureDatabricksDeltaLakeTable {
     }
 
     It works {
-        New-AzureDatabricksDeltaLakeTable -Name MyDataset -TableName MyTable -LinkedServiceReference $LinkedServiceReference -ErrorAction Stop
+        New-AdfAzureDatabricksDeltaLakeTable -Name MyDataset -TableName MyTable -LinkedServiceReference $LinkedServiceReference -ErrorAction Stop
     }
 }

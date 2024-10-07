@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- `Description` parameter of `New-Pipeline` is changed to be non mandatory.
+- `New-SqlServerStoredProcedure` is changed that `StoredProcedureName` parameter is added in a parameterset next to `StoredProcedureExpression`.
+
+### Added
+
+- Added new `New-PipelineActivity` function.
+
 ## [0.1.0] - 2023-03-21
 
 <!-- markdownlint-configure-file {"MD024": { "siblings_only": true } } -->

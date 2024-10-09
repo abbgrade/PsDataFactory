@@ -54,8 +54,11 @@ function New-CopyActivity {
     $activity.typeProperties | Add-Member source ([PSCustomObject] @{
             type              = $SourceType
             partitionOption   = 'None'
-            additionalColumns = $AdditionalSourceColumns
         })
+
+    if ( $AdditionalSourceColumns ) {
+        $activity.typeProperties.source | Add-Member additionalColumns $AdditionalSourceColumns
+    }
 
     $activity.typeProperties | Add-Member sink ([PSCustomObject] @{
             type = $SinkType

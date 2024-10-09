@@ -5,23 +5,17 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AdfSqlServerStoredProcedure
+# New-AdfAzureDatabricksDeltaLakeTable
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
 
 ## SYNTAX
 
-### Expression
 ```
-New-AdfSqlServerStoredProcedure -Name <String> -LinkedServiceReference <PSObject>
- -StoredProcedureExpression <String> [-Timeout <Object>] [-DependsOn <Object>] [<CommonParameters>]
-```
-
-### Name
-```
-New-AdfSqlServerStoredProcedure -Name <String> -LinkedServiceReference <PSObject> -StoredProcedureName <String>
- [-Timeout <Object>] [-DependsOn <Object>] [<CommonParameters>]
+New-AdfAzureDatabricksDeltaLakeTable [-Name] <String> [[-LinkedServiceReference] <PSObject>]
+ [[-Parameters] <PSObject>] [[-FolderName] <String>] [-TableName] <Object> [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,16 +32,16 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -DependsOn
-{{ Fill DependsOn Description }}
+### -FolderName
+{{ Fill FolderName Description }}
 
 ```yaml
-Type: Object
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -61,8 +55,8 @@ Type: PSObject
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: Named
+Required: False
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -77,49 +71,49 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StoredProcedureExpression
-{{ Fill StoredProcedureExpression Description }}
+### -Parameters
+{{ Fill Parameters Description }}
 
 ```yaml
-Type: String
-Parameter Sets: Expression
+Type: PSObject
+Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: Named
+Required: False
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StoredProcedureName
-{{ Fill StoredProcedureName Description }}
-
-```yaml
-Type: String
-Parameter Sets: Name
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Timeout
-{{ Fill Timeout Description }}
+### -TableName
+{{ Fill TableName Description }}
 
 ```yaml
 Type: Object
 Parameter Sets: (All)
 Aliases:
+
+Required: True
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

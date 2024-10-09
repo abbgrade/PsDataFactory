@@ -5,23 +5,16 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AdfSqlServerStoredProcedure
+# New-AdfPipelineActivity
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
 
 ## SYNTAX
 
-### Expression
 ```
-New-AdfSqlServerStoredProcedure -Name <String> -LinkedServiceReference <PSObject>
- -StoredProcedureExpression <String> [-Timeout <Object>] [-DependsOn <Object>] [<CommonParameters>]
-```
-
-### Name
-```
-New-AdfSqlServerStoredProcedure -Name <String> -LinkedServiceReference <PSObject> -StoredProcedureName <String>
- [-Timeout <Object>] [-DependsOn <Object>] [<CommonParameters>]
+New-AdfPipelineActivity [-Name] <String> [-PipelineName] <String> [[-Timeout] <Object>] [[-DependsOn] <Object>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,22 +40,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LinkedServiceReference
-{{ Fill LinkedServiceReference Description }}
-
-```yaml
-Type: PSObject
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -77,37 +55,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -StoredProcedureExpression
-{{ Fill StoredProcedureExpression Description }}
+### -PipelineName
+{{ Fill PipelineName Description }}
 
 ```yaml
 Type: String
-Parameter Sets: Expression
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -StoredProcedureName
-{{ Fill StoredProcedureName Description }}
-
-```yaml
-Type: String
-Parameter Sets: Name
-Aliases:
-
-Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -122,7 +85,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

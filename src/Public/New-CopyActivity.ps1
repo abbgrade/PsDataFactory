@@ -15,6 +15,9 @@ function New-CopyActivity {
         $SourceType,
 
         [Parameter()]
+        $AdditionalSourceColumns,
+
+        [Parameter()]
         $SourceQueryTimeout,
 
         [Parameter( Mandatory )]
@@ -22,7 +25,7 @@ function New-CopyActivity {
         [PsCustomObject] $Sink,
 
         [Parameter( Mandatory )]
-        [ValidateSet('AzureSqlSink', 'SqlSink', 'DelimitedTextSource')]
+        [ValidateSet('AzureSqlSink', 'SqlSink', 'DelimitedTextSource', 'AzureDatabricksDeltaLakeSink')]
         $SinkType,
 
         [Parameter()]
@@ -39,20 +42,36 @@ function New-CopyActivity {
         $DependsOn = @(),
 
         [Parameter()]
-        $Translator
+        $Translator,
+
+        [Parameter()]
+        $SinkStagingSettings
+
     )
 
     $activity = New-Activity -Name $Name -Type Copy -Timeout:$Timeout -DependsOn:$DependsOn
 
     $activity.typeProperties | Add-Member source ([PSCustomObject] @{
-            type = $SourceType
-            partitionOption = "None"
+            type              = $SourceType
+            partitionOption   = 'None'
         })
 
+    if ( $AdditionalSourceColumns ) {
+        $activity.typeProperties.source | Add-Member additionalColumns $AdditionalSourceColumns
+    }
+
     $activity.typeProperties | Add-Member sink ([PSCustomObject] @{
-        type = $SinkType
-    })
-    $activity.typeProperties | Add-Member enableStaging $false
+            type = $SinkType
+        })
+    
+    if ($SinkStagingSettings) {
+        $activity.typeProperties | Add-Member enableStaging $true
+        $activity.typeProperties | Add-Member stagingSettings $SinkStagingSettings
+    }
+    else {
+        $activity.typeProperties | Add-Member enableStaging $false
+    }
+    
 
     if ( $SourceQueryTimeout ) {
         $activity.typeProperties.source | Add-Member queryTimeout $SourceQueryTimeout

@@ -18,11 +18,16 @@ function New-AzureDatabricksDeltaLakeTable {
 
         [Parameter( Mandatory )]
         [ValidateNotNullOrEmpty()]
-        $TableName
+        [string] $SchemaName,
+
+        [Parameter( Mandatory )]
+        [ValidateNotNullOrEmpty()]
+        [string] $TableName
     )
 
     $TypeProperties = [PSCustomObject]@{
-        tableName = $TableName
+        database = $SchemaName
+        table = $TableName
     }
 
     New-Dataset `

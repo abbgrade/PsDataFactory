@@ -18,11 +18,31 @@ function New-DelimitedTextDataset {
 
         [Parameter( Mandatory )]
         [ValidateNotNullOrEmpty()]
-        $TableName
+        [PSCustomObject] $Location,
+
+        [Parameter( Mandatory )]
+        [ValidateNotNullOrEmpty()]
+        [string] $ColumnDelimiter,
+
+        [Parameter( Mandatory )]
+        [ValidateNotNullOrEmpty()]
+        [string] $EscapeChar,
+
+        [Parameter( Mandatory )]
+        [ValidateNotNullOrEmpty()]
+        [bool] $FirstRowAsHeader,
+
+        [Parameter( Mandatory )]
+        [ValidateNotNullOrEmpty()]
+        [string] $QuoteChar
     )
 
     $TypeProperties = [PSCustomObject]@{
-        tableName = $TableName
+        location = $Location
+        columnDelimiter = $ColumnDelimiter
+        escapeChar = $EscapeChar
+        firstRowAsHeader = $FirstRowAsHeader
+        quoteChar = $QuoteChar
     }
 
     New-Dataset `

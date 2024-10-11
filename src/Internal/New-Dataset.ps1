@@ -36,6 +36,7 @@ function New-Dataset {
             type = $Type
             structure = @()
             typeProperties = $TypeProperties
+            schema = @()
         }
         type = 'Microsoft.DataFactory/factories/datasets'
     }

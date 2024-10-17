@@ -22,7 +22,13 @@ function New-Dataset {
         [PSCustomObject] $Parameters = @{},
 
         [Parameter()]
-        [string] $FolderName
+        [string] $FolderName,
+
+        [Parameter()]
+        $Structure,
+
+        [Parameter()]
+        $Schema
     )
 
     $dataset = [PsCustomObject] @{
@@ -34,11 +40,17 @@ function New-Dataset {
                 'THIS IS A GENERATED DATASET. CHANGES MAY BE OVERWRITTEN!'
             )
             type = $Type
-            structure = @()
             typeProperties = $TypeProperties
-            schema = @()
         }
         type = 'Microsoft.DataFactory/factories/datasets'
+    }
+
+    if ( $Structure ) {
+        $dataset.properties | Add-Member struct $Structure
+    } elseif ( $Schema ) {
+        $dataset.properties | Add-Member schema $Schema
+    } else {
+        $dataset.properties | Add-Member schema @()
     }
 
     if ( $FolderName ) {

@@ -34,7 +34,13 @@ function New-DelimitedTextDataset {
 
         [Parameter( Mandatory )]
         [ValidateNotNullOrEmpty()]
-        [string] $QuoteChar
+        [string] $QuoteChar,
+
+        [Parameter()]
+        $Structure,
+
+        [Parameter()]
+        $Schema
     )
 
     $TypeProperties = [PSCustomObject]@{
@@ -51,5 +57,7 @@ function New-DelimitedTextDataset {
         -Type DelimitedText `
         -TypeProperties $TypeProperties `
         -LinkedServiceReference:$LinkedServiceReference `
-        -Parameters:$Parameters
+        -Parameters:$Parameters `
+        -Structure $Structure `
+        -Schema $Schema
 }

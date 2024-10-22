@@ -10,7 +10,7 @@ Describe New-AzureDatabricksDeltaLakeTable {
         $LinkedServiceReference = New-AdfLinkedServiceReference -Name MyLinkedService
     }
 
-    It works {
-        New-AdfAzureDatabricksDeltaLakeTable -Name MyDataset -SchemaName MySchema -TableName MyTable -LinkedServiceReference $LinkedServiceReference -ErrorAction Stop
+    It 'works with Schema' {
+        New-AdfAzureDatabricksDeltaLakeTable -Name MyDataset -SchemaName MySchema -TableName MyTable -LinkedServiceReference $LinkedServiceReference -UseSchema -ErrorAction Stop
     }
 }

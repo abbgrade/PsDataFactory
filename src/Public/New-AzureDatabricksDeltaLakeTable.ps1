@@ -25,10 +25,10 @@ function New-AzureDatabricksDeltaLakeTable {
         [string] $TableName,
 
         [Parameter()]
-        $Structure,
+        [Switch] $UseStructure,
 
         [Parameter()]
-        $Schema
+        [Switch] $UseSchema
     )
 
     $TypeProperties = [PSCustomObject]@{
@@ -43,6 +43,6 @@ function New-AzureDatabricksDeltaLakeTable {
         -TypeProperties $TypeProperties `
         -LinkedServiceReference:$LinkedServiceReference `
         -Parameters:$Parameters `
-        -Structure $Structure `
-        -Schema $Schema
+        -UseStructure:$UseStructure `
+        -UseSchema:$UseSchema
 }

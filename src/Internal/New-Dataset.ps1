@@ -25,10 +25,10 @@ function New-Dataset {
         [string] $FolderName,
 
         [Parameter()]
-        $Structure,
+        [switch] $UseStructure,
 
         [Parameter()]
-        $Schema
+        [switch] $UseSchema
     )
 
     $dataset = [PsCustomObject] @{
@@ -45,11 +45,9 @@ function New-Dataset {
         type = 'Microsoft.DataFactory/factories/datasets'
     }
 
-    if ( $Structure ) {
-        $dataset.properties | Add-Member struct $Structure
-    } elseif ( $Schema ) {
-        $dataset.properties | Add-Member schema $Schema
-    } else {
+    if ( $UseStructure ) {
+        $dataset.properties | Add-Member structure @()
+    } elseif ( $UseSchema ) {
         $dataset.properties | Add-Member schema @()
     }
 

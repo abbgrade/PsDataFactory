@@ -26,7 +26,7 @@ function New-Dataset {
 
         [Parameter()]
         [ValidateSet('structure', 'schema')]
-        [string] $StructureOrSchema
+        [string] $SchemaType
     )
 
     $dataset = [PsCustomObject] @{
@@ -42,8 +42,8 @@ function New-Dataset {
         type = 'Microsoft.DataFactory/factories/datasets'
     }
 
-    if ( $StructureOrSchema ) {
-        $dataset.properties | Add-Member $StructureOrSchema @()
+    if ( $SchemaType ) {
+        $dataset.properties | Add-Member $SchemaType @()
     }
 
     if ( $FolderName ) {

@@ -15,8 +15,7 @@ schema: 2.0.0
 ```
 New-AdfDelimitedTextDataset [-Name] <String> [[-LinkedServiceReference] <PSObject>] [[-Parameters] <PSObject>]
  [[-FolderName] <String>] [-Location] <PSObject> [-ColumnDelimiter] <String> [-EscapeChar] <String>
- [-FirstRowAsHeader] <Boolean> [-QuoteChar] <String> [-UseStructure] [-UseSchema]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-FirstRowAsHeader] <Boolean> [-QuoteChar] <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -163,36 +162,6 @@ Aliases:
 
 Required: True
 Position: 8
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UseSchema
-{{ Fill UseSchema Description }}
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UseStructure
-{{ Fill UseStructure Description }}
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

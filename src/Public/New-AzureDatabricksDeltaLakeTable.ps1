@@ -22,13 +22,7 @@ function New-AzureDatabricksDeltaLakeTable {
 
         [Parameter( Mandatory )]
         [ValidateNotNullOrEmpty()]
-        [string] $TableName,
-
-        [Parameter()]
-        [Switch] $UseStructure,
-
-        [Parameter()]
-        [Switch] $UseSchema
+        [string] $TableName
     )
 
     $TypeProperties = [PSCustomObject]@{
@@ -43,5 +37,5 @@ function New-AzureDatabricksDeltaLakeTable {
         -TypeProperties $TypeProperties `
         -LinkedServiceReference:$LinkedServiceReference `
         -Parameters:$Parameters `
-        -StructureOrSchema 'schema'
+        -SchemaType 'schema'
 }

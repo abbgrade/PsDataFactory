@@ -15,7 +15,7 @@ schema: 2.0.0
 ```
 New-AdfAzureDatabricksDeltaLakeTable [-Name] <String> [[-LinkedServiceReference] <PSObject>]
  [[-Parameters] <PSObject>] [[-FolderName] <String>] [-SchemaName] <String> [-TableName] <String>
- [-UseStructure] [-UseSchema] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -117,36 +117,6 @@ Aliases:
 
 Required: True
 Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UseSchema
-{{ Fill UseSchema Description }}
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UseStructure
-{{ Fill UseStructure Description }}
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

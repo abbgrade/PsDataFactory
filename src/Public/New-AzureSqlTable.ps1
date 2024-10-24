@@ -32,5 +32,5 @@ function New-AzureSqlTable {
         -TypeProperties $TypeProperties `
         -LinkedServiceReference:$LinkedServiceReference `
         -Parameters:$Parameters `
-        -StructureOrSchema 'structure'
+        -SchemaType 'structure'
 }

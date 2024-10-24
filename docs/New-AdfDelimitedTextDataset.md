@@ -14,7 +14,8 @@ schema: 2.0.0
 
 ```
 New-AdfDelimitedTextDataset [-Name] <String> [[-LinkedServiceReference] <PSObject>] [[-Parameters] <PSObject>]
- [[-FolderName] <String>] [-TableName] <Object> [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [[-FolderName] <String>] [-Location] <PSObject> [-ColumnDelimiter] <String> [-EscapeChar] <String>
+ [-FirstRowAsHeader] <Boolean> [-QuoteChar] <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +31,51 @@ PS C:\> {{ Add example code here }}
 {{ Add example description here }}
 
 ## PARAMETERS
+
+### -ColumnDelimiter
+{{ Fill ColumnDelimiter Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EscapeChar
+{{ Fill EscapeChar Description }}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FirstRowAsHeader
+{{ Fill FirstRowAsHeader Description }}
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 7
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -FolderName
 {{ Fill FolderName Description }}
@@ -56,6 +102,21 @@ Aliases:
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+{{ Fill Location Description }}
+
+```yaml
+Type: PSObject
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -91,16 +152,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TableName
-{{ Fill TableName Description }}
+### -QuoteChar
+{{ Fill QuoteChar Description }}
 
 ```yaml
-Type: Object
+Type: String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 4
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

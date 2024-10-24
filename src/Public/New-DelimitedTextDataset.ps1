@@ -52,5 +52,5 @@ function New-DelimitedTextDataset {
         -TypeProperties $TypeProperties `
         -LinkedServiceReference:$LinkedServiceReference `
         -Parameters:$Parameters `
-        -SchemaType 'structure'
+        -SchemaType 'schema'
 }

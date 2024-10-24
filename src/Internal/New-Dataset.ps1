@@ -38,6 +38,7 @@ function New-Dataset {
                 'THIS IS A GENERATED DATASET. CHANGES MAY BE OVERWRITTEN!'
             )
             type = $Type
+            typeProperties = $TypeProperties
         }
         type = 'Microsoft.DataFactory/factories/datasets'
     }

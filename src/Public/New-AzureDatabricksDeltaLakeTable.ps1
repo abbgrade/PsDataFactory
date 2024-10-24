@@ -43,6 +43,5 @@ function New-AzureDatabricksDeltaLakeTable {
         -TypeProperties $TypeProperties `
         -LinkedServiceReference:$LinkedServiceReference `
         -Parameters:$Parameters `
-        -UseStructure:$UseStructure `
-        -UseSchema:$UseSchema
+        -StructureOrSchema 'schema'
 }

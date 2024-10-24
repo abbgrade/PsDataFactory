@@ -25,7 +25,7 @@ Describe New-CopyActivity {
         BeforeEach {
             $LinkedServiceReference = New-AdfLinkedServiceReference -Name MyLinkedService
             $Source = New-AdfAzureSqlTable -Name MySourceDataset -TableName MyTable -LinkedServiceReference $LinkedServiceReference
-            $Sink = New-AdfAzureDatabricksDeltaLakeTable -Name MySinkDataset -SchemaName MySchema -TableName MyTable -LinkedServiceReference $LinkedServiceReference -UseSchema
+            $Sink = New-AdfAzureDatabricksDeltaLakeTable -Name MySinkDataset -SchemaName MySchema -TableName MyTable -LinkedServiceReference $LinkedServiceReference
         }
 
         It 'has importSetting type' {

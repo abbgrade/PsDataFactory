@@ -63,7 +63,7 @@ function New-CopyActivity {
     $activity.typeProperties | Add-Member sink ([PSCustomObject] @{
             type = $SinkType
         })
-    
+
     if ($SinkStagingSettings) {
         $activity.typeProperties | Add-Member enableStaging $true
         $activity.typeProperties | Add-Member stagingSettings $SinkStagingSettings
@@ -71,7 +71,7 @@ function New-CopyActivity {
     else {
         $activity.typeProperties | Add-Member enableStaging $false
     }
-    
+
 
     if ( $SourceQueryTimeout ) {
         $activity.typeProperties.source | Add-Member queryTimeout $SourceQueryTimeout
@@ -83,6 +83,12 @@ function New-CopyActivity {
 
     if ( $SqlWriterUseTableLock.IsPresent ) {
         $activity.typeProperties.sink | Add-Member sqlWriterUseTableLock $true
+    }
+
+    if ( $SinkType -eq 'AzureDatabricksDeltaLakeSink' ) {
+        $activity.typeProperties.sink | Add-Member importSettings ([PSCustomObject] @{
+            type = "AzureDatabricksDeltaLakeImportCommand"
+        })
     }
 
     if ( $Translator ) {

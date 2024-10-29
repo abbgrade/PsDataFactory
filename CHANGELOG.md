@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2024-10-25
+
+### Changed
+
+- Added schema parameter to `New-AzureDatabricksDeltaLakeTable`.
+- Added delta lake support to `New-CopyActivity`.
+- Added CSV specific parameters to `New-DelimitedTextDataset`.
+
 ## [0.2.0] - 2024-10-07
 
 ### Changed

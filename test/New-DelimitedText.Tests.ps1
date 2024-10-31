@@ -25,4 +25,21 @@ Describe New-DelimitedText {
             -QuoteChar "`"" `
             -ErrorAction Stop
     }
+
+    It 'has property <schema>' {
+        $dataset = New-AdfDelimitedTextDataset `
+            -Name MyDataset `
+            -LinkedServiceReference $LinkedServiceReference `
+            -Location ([PSCustomObject]@{
+                type = "type"
+                folderPath = "folderPath"
+                container = "contain"
+            }) `
+            -ColumnDelimiter "`t" `
+            -EscapeChar "`\" `
+            -FirstRowAsHeader $true `
+            -QuoteChar "`"" `
+            -ErrorAction Stop
+        $dataset.properties.PSobject.Properties.name -contains "schema" | Should -BeTrue
+    }
 }

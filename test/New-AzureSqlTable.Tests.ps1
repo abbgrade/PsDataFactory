@@ -13,4 +13,9 @@ Describe New-AzureSqlTable {
     It works {
         New-AdfAzureSqlTable -Name MyDataset -TableName MyTable -LinkedServiceReference $LinkedServiceReference -ErrorAction Stop
     }
+
+    It 'has property <structure>' {
+        $dataset = New-AdfAzureSqlTable -Name MyDataset -TableName MyTable -LinkedServiceReference $LinkedServiceReference -ErrorAction Stop
+        $dataset.properties.PSobject.Properties.name -contains "structure" | Should -BeTrue
+    }
 }

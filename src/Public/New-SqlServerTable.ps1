@@ -31,5 +31,6 @@ function New-SqlServerTable {
         -Type SqlServerTable `
         -TypeProperties $TypeProperties `
         -LinkedServiceReference:$LinkedServiceReference `
-        -Parameters:$Parameters
+        -Parameters:$Parameters `
+        -SchemaType 'structure'
 }

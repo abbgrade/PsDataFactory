@@ -10,7 +10,12 @@ Describe New-AzureDatabricksDeltaLakeTable {
         $LinkedServiceReference = New-AdfLinkedServiceReference -Name MyLinkedService
     }
 
-    It 'works with Schema' {
+    It works {
         New-AdfAzureDatabricksDeltaLakeTable -Name MyDataset -SchemaName MySchema -TableName MyTable -LinkedServiceReference $LinkedServiceReference -ErrorAction Stop
+    }
+
+    It 'has property <schema>' {
+        $dataset = New-AdfAzureDatabricksDeltaLakeTable -Name MyDataset -SchemaName MySchema -TableName MyTable -LinkedServiceReference $LinkedServiceReference -ErrorAction Stop
+        $dataset.properties.PSobject.Properties.name -contains "schema" | Should -BeTrue
     }
 }

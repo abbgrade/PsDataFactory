@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added support for DeltaLake datasets for copy activities.
+
 ## [0.4.0] - 2024-11-26
 
 ### Added

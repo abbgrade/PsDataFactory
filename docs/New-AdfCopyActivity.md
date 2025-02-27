@@ -177,7 +177,7 @@ Accept wildcard characters: False
 Type: Object
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureSqlSource, SqlSource, DelimitedTextSource
+Accepted values: AzureSqlSource, SqlSource, DelimitedTextSource, AzureDatabricksDeltaLakeSink
 
 Required: True
 Position: 2

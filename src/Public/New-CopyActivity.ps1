@@ -11,7 +11,7 @@ function New-CopyActivity {
         [PsCustomObject] $Source,
 
         [Parameter( Mandatory )]
-        [ValidateSet('AzureSqlSource', 'SqlSource', 'DelimitedTextSource')]
+        [ValidateSet('AzureSqlSource', 'SqlSource', 'DelimitedTextSource', 'AzureDatabricksDeltaLakeSink')]
         $SourceType,
 
         [Parameter()]

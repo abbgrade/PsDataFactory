@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AdfActivity
+# Edit-AdfPipeline
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Get-AdfActivity [-Pipeline] <PSObject> [[-Name] <String>] [-ProgressAction <ActionPreference>]
+Edit-AdfPipeline [-Pipeline] <Object> [-Operation] <String> [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -31,15 +31,16 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -Name
-{{ Fill Name Description }}
+### -Operation
+{{ Fill Operation Description }}
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: InvertDependencies
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
@@ -50,7 +51,7 @@ Accept wildcard characters: False
 {{ Fill Pipeline Description }}
 
 ```yaml
-Type: PSObject
+Type: Object
 Parameter Sets: (All)
 Aliases:
 
@@ -61,12 +62,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.Management.Automation.PSObject
+### System.Object
 
 ## OUTPUTS
 

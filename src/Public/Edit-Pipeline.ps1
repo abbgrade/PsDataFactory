@@ -13,13 +13,23 @@ function Edit-Pipeline {
     process {
         switch ($Operation) {
             InvertDependencies {
-                $Pipeline | Get-Activity | ForEach-Object {
+                
+                # select all dependencies
+                $dependencies = $Pipeline | Get-Activity | ForEach-Object {
                     $Activity = $_
                     $Activity | Get-Dependency | ForEach-Object {
-                        $PredecessorActivity = $Pipeline | Get-Activity -Name $_.Activity
-                        $PredecessorActivity | Add-Dependency -OnActivity $Activity -Condition $_.dependencyConditions
-                        $Activity | Remove-Dependency -OnActivity $PredecessorActivity
+                        @{
+                            Activity = $Activity
+                            PredecessorActivity = ( $Pipeline | Get-Activity -Name $_.Activity )
+                            DependencyConditions = $_.dependencyConditions
+                        }
                     }
+                }
+
+                # replace dependencies
+                $dependencies | ForEach-Object {
+                    $_.Activity | Remove-Dependency -OnActivity $_.PredecessorActivity
+                    $_.PredecessorActivity | Add-Dependency -OnActivity $_.Activity -Condition $_.DependencyConditions
                 }
             }
             Default {

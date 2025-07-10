@@ -15,6 +15,12 @@ function Add-Dependency {
     )
 
     process {
+        if ( -not $Activity.dependsOn ) {
+            $Activity.dependsOn = @()
+        } else {
+            $Activity.dependsOn = @() + $Activity.dependsOn
+        }
+
         $Activity.dependsOn += [PsCustomObject]@{
             activity = $OnActivity.Name
             dependencyConditions = @(

@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AdfActivity
+# Remove-AdfDependency
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Get-AdfActivity [-Pipeline] <PSObject> [[-Name] <String>] [-ProgressAction <ActionPreference>]
+Remove-AdfDependency [-Activity] <PSObject> [-OnActivity] <Object> [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -31,23 +31,8 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -Name
-{{ Fill Name Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Pipeline
-{{ Fill Pipeline Description }}
+### -Activity
+{{ Fill Activity Description }}
 
 ```yaml
 Type: PSObject
@@ -58,6 +43,36 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -OnActivity
+{{ Fill OnActivity Description }}
+
+```yaml
+Type: Object
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

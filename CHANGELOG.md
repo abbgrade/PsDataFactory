@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- New function `Edit-Pipeline` to invert dependencies.
+- Added optional Name parameter to `Get-Activity` function.
+- Added `Get-Dependency` and `Remove-Dependency` functions
+- Added `Import-Pipeline` function.
+
 ## [0.5.0] - 2025-02-27
 
 ### Added

@@ -12,6 +12,7 @@ function Remove-Dependency {
 
     process {
         $Activity.dependsOn = $Activity.dependsOn | Where-Object activity -ne $OnActivity.Name
+        
         if ( -not $Activity.dependsOn ) {
             $Activity.dependsOn = @()
         }

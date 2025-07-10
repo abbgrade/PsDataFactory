@@ -11,8 +11,8 @@ Describe Edit-Pipeline {
         $ActivityA = New-AdfPipelineActivity -Name A -PipelineName A
         $ActivityB = New-AdfPipelineActivity -Name B -PipelineName B
         $ActivityB | Add-AdfDependency -OnActivity $ActivityA -Condition Succeeded
-        $Pipeline | Add-AdfActivity $ActivityA
         $Pipeline | Add-AdfActivity $ActivityB
+        $Pipeline | Add-AdfActivity $ActivityA
     }
 
     It works {

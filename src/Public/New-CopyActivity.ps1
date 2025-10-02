@@ -49,6 +49,12 @@ function New-CopyActivity {
 
     )
 
+    if ($SourceType -eq 'AzureDatabricksDeltaLakeSource' -and $SinkType -eq 'DelimitedTextSink') {
+        if (-not $SinkStagingSettings) {
+            throw "When SourceType is '$SourceType' and SinkType is '$SinkType', staging via 'SinkStagingSettings' must be enabled"
+        }
+    }
+
     $activity = New-Activity -Name $Name -Type Copy -Timeout:$Timeout -DependsOn:$DependsOn
 
     $activity.typeProperties | Add-Member source ([PSCustomObject] @{

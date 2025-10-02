@@ -116,7 +116,7 @@ Accept wildcard characters: False
 Type: Object
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureSqlSink, SqlSink, DelimitedTextSource, AzureDatabricksDeltaLakeSink
+Accepted values: AzureSqlSink, SqlSink, DelimitedTextSink, AzureDatabricksDeltaLakeSink
 
 Required: True
 Position: 6
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 Type: Object
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureSqlSource, SqlSource, DelimitedTextSource, AzureDatabricksDeltaLakeSink
+Accepted values: AzureSqlSource, SqlSource, DelimitedTextSource, AzureDatabricksDeltaLakeSource
 
 Required: True
 Position: 2

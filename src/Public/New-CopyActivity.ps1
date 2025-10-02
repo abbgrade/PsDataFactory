@@ -11,7 +11,7 @@ function New-CopyActivity {
         [PsCustomObject] $Source,
 
         [Parameter( Mandatory )]
-        [ValidateSet('AzureSqlSource', 'SqlSource', 'DelimitedTextSource', 'AzureDatabricksDeltaLakeSink')]
+        [ValidateSet('AzureSqlSource', 'SqlSource', 'DelimitedTextSource', 'AzureDatabricksDeltaLakeSource')]
         $SourceType,
 
         [Parameter()]
@@ -25,7 +25,7 @@ function New-CopyActivity {
         [PsCustomObject] $Sink,
 
         [Parameter( Mandatory )]
-        [ValidateSet('AzureSqlSink', 'SqlSink', 'DelimitedTextSource', 'AzureDatabricksDeltaLakeSink')]
+        [ValidateSet('AzureSqlSink', 'SqlSink', 'DelimitedTextSink', 'AzureDatabricksDeltaLakeSink')]
         $SinkType,
 
         [Parameter()]

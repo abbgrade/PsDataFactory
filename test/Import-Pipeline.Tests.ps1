@@ -7,12 +7,12 @@ Describe Import-Pipeline {
     }
 
     BeforeEach {
-        $Pipeline = New-AdfPipeline -Name MyPipeline -Description Test
+        $Pipeline = New-AdfPipeline -Name MyPipeline -Description Test -ErrorAction Stop
         $Path = $Pipeline | Export-AdfPipeline -PipelinesDirectory $TestDrive -ErrorAction Stop
     }
 
     It works {
-        $imported = $Path | Import-AdfPipeline
+        $imported = $Path | Import-AdfPipeline -ErrorAction Stop
         $imported | Should -Not -BeNullOrEmpty
     }
 }

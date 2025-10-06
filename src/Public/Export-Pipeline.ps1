@@ -11,7 +11,7 @@ function Export-Pipeline {
     )
 
     process {
-        $PipelinePath = "$( $PipelinesDirectory.FullName )\$( $Pipeline.name ).json"
+        [System.IO.FileInfo] $PipelinePath = Join-Path $PipelinesDirectory.FullName "$( $Pipeline.name ).json"
         Write-Verbose "Write pipeline file $PipelinePath"
         $json = $Pipeline | ConvertTo-Json -Depth 10
         $json | Out-File -FilePath $PipelinePath -Encoding UTF8

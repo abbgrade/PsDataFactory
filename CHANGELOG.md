@@ -7,8 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.6.2] - 2025-07-10
-
 ### Added
 
 - Exception: when SourceType is 'AzureDatabricksDeltaLakeSource' and SinkType is 'DelimitedTextSink', staging via 'SinkStagingSettings' must be enabled
@@ -17,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - allowed SourceType 'AzureDatabricksDeltaLakeSink' to 'AzureDatabricksDeltaLakeSource' in 'New-CopyActivity'
 - allowed SinkType 'DelimitedTextSource' to 'DelimitedTextSink' in 'New-CopyActivity'
+
+### Fixed
+
+- Fix non-windows path separator in `Export-Pipeline`.
 
 ## [0.6.1] - 2025-07-10
 

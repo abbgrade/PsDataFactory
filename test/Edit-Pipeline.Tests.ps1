@@ -23,11 +23,11 @@ Describe Edit-Pipeline {
 
         BeforeEach {
             $Path = $Pipeline | Export-AdfPipeline -PipelinesDirectory $TestDrive -ErrorAction Stop
-            $ImportedPipeline = $Path | Import-AdfPipeline
+            $ImportedPipeline = $Path | Import-AdfPipeline -ErrorAction Stop
         }
 
         It works {
-            $ImportedPipeline | Edit-AdfPipeline -Operation InvertDependencies
+            $ImportedPipeline | Edit-AdfPipeline -Operation InvertDependencies -ErrorAction Stop
             $DependencyA = $ImportedPipeline | Get-AdfActivity -Name A | Get-AdfDependency
             $DependencyA | Should -Not -BeNullOrEmpty
             $DependencyA.Activity | Should -Be B

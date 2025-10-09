@@ -96,6 +96,12 @@ function New-CopyActivity {
         })
     }
 
+    if ( $SourceType -eq 'AzureDatabricksDeltaLakeSource' ) {
+        $activity.typeProperties.source | Add-Member exportSettings ([PSCustomObject] @{
+            type = "AzureDatabricksDeltaLakeImportCommand"
+        })
+    }
+
     if ( $Translator ) {
         $activity.typeProperties | Add-Member translator $Translator
     }

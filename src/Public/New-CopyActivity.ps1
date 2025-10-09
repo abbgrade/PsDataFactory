@@ -78,13 +78,12 @@ function New-CopyActivity {
         $activity.typeProperties | Add-Member enableStaging $false
     }
 
-
     if ( $SourceQueryTimeout ) {
         $activity.typeProperties.source | Add-Member queryTimeout $SourceQueryTimeout
     }
 
     if ( $SinkWriteBehavior ) {
-        $activity.typeProperties.sink | Add-Member writeBehavior $SinkWriteBehavior
+        $activity.typeProperties.sink | Add-Member storeSettings $SinkWriteBehavior
     }
 
     if ( $SqlWriterUseTableLock.IsPresent ) {

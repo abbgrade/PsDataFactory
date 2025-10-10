@@ -15,13 +15,14 @@ schema: 2.0.0
 ### Expression
 ```
 New-AdfSqlServerStoredProcedure -Name <String> -LinkedServiceReference <PSObject>
- -StoredProcedureExpression <String> [-Timeout <Object>] [-DependsOn <Object>] [<CommonParameters>]
+ -StoredProcedureExpression <String> [-Timeout <Object>] [-DependsOn <Object>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Name
 ```
 New-AdfSqlServerStoredProcedure -Name <String> -LinkedServiceReference <PSObject> -StoredProcedureName <String>
- [-Timeout <Object>] [-DependsOn <Object>] [<CommonParameters>]
+ [-Timeout <Object>] [-DependsOn <Object>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,6 +121,21 @@ Accept wildcard characters: False
 Type: Object
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

@@ -11,7 +11,7 @@ function New-CopyActivity {
         [PsCustomObject] $Source,
 
         [Parameter( Mandatory )]
-        [ValidateSet('AzureSqlSource', 'SqlSource', 'DelimitedTextSource', 'AzureDatabricksDeltaLakeSink')]
+        [ValidateSet('AzureSqlSource', 'SqlSource', 'DelimitedTextSource', 'AzureDatabricksDeltaLakeSource')]
         $SourceType,
 
         [Parameter()]
@@ -25,7 +25,7 @@ function New-CopyActivity {
         [PsCustomObject] $Sink,
 
         [Parameter( Mandatory )]
-        [ValidateSet('AzureSqlSink', 'SqlSink', 'DelimitedTextSource', 'AzureDatabricksDeltaLakeSink')]
+        [ValidateSet('AzureSqlSink', 'SqlSink', 'DelimitedTextSink', 'AzureDatabricksDeltaLakeSink')]
         $SinkType,
 
         [Parameter()]
@@ -48,6 +48,12 @@ function New-CopyActivity {
         $SinkStagingSettings
 
     )
+
+    if ($SourceType -eq 'AzureDatabricksDeltaLakeSource' -and $SinkType -eq 'DelimitedTextSink') {
+        if (-not $SinkStagingSettings) {
+            Write-Error "When SourceType is '$SourceType' and SinkType is '$SinkType', staging via 'SinkStagingSettings' must be enabled"
+        }
+    }
 
     $activity = New-Activity -Name $Name -Type Copy -Timeout:$Timeout -DependsOn:$DependsOn
 
@@ -72,13 +78,12 @@ function New-CopyActivity {
         $activity.typeProperties | Add-Member enableStaging $false
     }
 
-
     if ( $SourceQueryTimeout ) {
         $activity.typeProperties.source | Add-Member queryTimeout $SourceQueryTimeout
     }
 
     if ( $SinkWriteBehavior ) {
-        $activity.typeProperties.sink | Add-Member writeBehavior $SinkWriteBehavior
+        $activity.typeProperties.sink | Add-Member storeSettings $SinkWriteBehavior
     }
 
     if ( $SqlWriterUseTableLock.IsPresent ) {
@@ -87,6 +92,12 @@ function New-CopyActivity {
 
     if ( $SinkType -eq 'AzureDatabricksDeltaLakeSink' ) {
         $activity.typeProperties.sink | Add-Member importSettings ([PSCustomObject] @{
+            type = "AzureDatabricksDeltaLakeImportCommand"
+        })
+    }
+
+    if ( $SourceType -eq 'AzureDatabricksDeltaLakeSource' ) {
+        $activity.typeProperties.source | Add-Member exportSettings ([PSCustomObject] @{
             type = "AzureDatabricksDeltaLakeImportCommand"
         })
     }

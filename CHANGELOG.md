@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added `Import-Dataflow` to import data flow definitions from JSON files.
+- Added `Get-Annotation` to return each pipeline annotation as a separate string output.
+- Added `Add-Annotation` to append one annotation.
 
 ### Changed
 

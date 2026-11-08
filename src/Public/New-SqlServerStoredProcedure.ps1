@@ -5,6 +5,12 @@ Creates a SQL Server stored procedure activity.
 .DESCRIPTION
 Creates an activity that invokes a stored procedure using the supplied linked service. Specify either a literal procedure name or an expression.
 
+.LINK
+https://abbgrade.github.io/PsDataFactory/docs/New-AdfSqlServerStoredProcedure.html
+
+.LINK
+https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01
+
 .OUTPUTS
 System.Management.Automation.PSCustomObject. The stored procedure activity definition.
 

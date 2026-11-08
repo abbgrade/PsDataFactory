@@ -5,6 +5,12 @@ Creates an Azure Databricks Python activity.
 .DESCRIPTION
 Creates an activity that runs the specified Python file using the supplied Azure Databricks linked service.
 
+.LINK
+https://abbgrade.github.io/PsDataFactory/docs/New-AdfDatabricksPythonActivity.html
+
+.LINK
+https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01
+
 .OUTPUTS
 System.Management.Automation.PSCustomObject. The activity definition.
 

@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Improved PlatyPS help for dependency and pipeline activity commands.
+- Added relevant Azure Data Factory REST API references to public function help.
+- Added hosted command help URLs to function source for PlatyPS online-version metadata.
 
 ### Fixed
 

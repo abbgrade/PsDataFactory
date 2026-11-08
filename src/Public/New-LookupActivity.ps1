@@ -5,6 +5,12 @@ Creates a Lookup activity.
 .DESCRIPTION
 Creates a Lookup activity that reads from the supplied dataset using one of the supported source types.
 
+.LINK
+https://abbgrade.github.io/PsDataFactory/docs/New-AdfLookupActivity.html
+
+.LINK
+https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01
+
 .OUTPUTS
 System.Management.Automation.PSCustomObject. The Lookup activity definition.
 

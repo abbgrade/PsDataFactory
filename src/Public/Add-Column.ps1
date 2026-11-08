@@ -5,6 +5,12 @@ Adds a column definition to a dataset structure.
 .DESCRIPTION
 Adds a named column and type to the dataset structure. Alternatively, accepts a SQL DAC model column and maps its data type to an Azure Data Factory type when that source type is supported.
 
+.LINK
+https://abbgrade.github.io/PsDataFactory/docs/Add-AdfColumn.html
+
+.LINK
+https://learn.microsoft.com/en-us/rest/api/datafactory/datasets/create-or-update?view=rest-datafactory-2018-06-01
+
 .EXAMPLE
 $dataset | Add-AdfColumn -Name 'CustomerId' -Type 'Int32'
 Adds a column definition to the dataset structure.

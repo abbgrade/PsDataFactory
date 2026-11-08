@@ -5,6 +5,12 @@ Imports a pipeline from a JSON file.
 .DESCRIPTION
 Reads the specified pipeline JSON file and converts its contents to a PowerShell object.
 
+.LINK
+https://abbgrade.github.io/PsDataFactory/docs/Import-AdfPipeline.html
+
+.LINK
+https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01
+
 .OUTPUTS
 System.Management.Automation.PSCustomObject. The imported pipeline object.
 

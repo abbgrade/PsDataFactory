@@ -5,6 +5,12 @@ Creates an Azure Data Factory pipeline definition.
 .DESCRIPTION
 Creates a pipeline object with its name, description, activities, parameters, variables, folder, and generated-pipeline annotation.
 
+.LINK
+https://abbgrade.github.io/PsDataFactory/docs/New-AdfPipeline.html
+
+.LINK
+https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01
+
 .OUTPUTS
 System.Management.Automation.PSCustomObject. The pipeline definition.
 

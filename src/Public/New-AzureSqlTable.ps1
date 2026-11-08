@@ -5,6 +5,12 @@ Creates an Azure SQL table dataset definition.
 .DESCRIPTION
 Creates a dataset for an Azure SQL table, including its table name, linked service reference, parameters, and folder settings.
 
+.LINK
+https://abbgrade.github.io/PsDataFactory/docs/New-AdfAzureSqlTable.html
+
+.LINK
+https://learn.microsoft.com/en-us/rest/api/datafactory/datasets/create-or-update?view=rest-datafactory-2018-06-01
+
 .OUTPUTS
 System.Management.Automation.PSCustomObject. The dataset definition.
 

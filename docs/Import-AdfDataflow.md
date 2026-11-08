@@ -1,7 +1,7 @@
 ---
 external help file: PsDataFactory-help.xml
 Module Name: PsDataFactory
-online version:
+online version: https://abbgrade.github.io/PsDataFactory/docs/Import-AdfDataflow.html
 schema: 2.0.0
 ---
 
@@ -71,3 +71,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[https://abbgrade.github.io/PsDataFactory/docs/Import-AdfDataflow.html](https://abbgrade.github.io/PsDataFactory/docs/Import-AdfDataflow.html)
+
+[https://learn.microsoft.com/en-us/rest/api/datafactory/?view=rest-datafactory-2018-06-01](https://learn.microsoft.com/en-us/rest/api/datafactory/?view=rest-datafactory-2018-06-01)
+

@@ -5,6 +5,12 @@ Gets activities from a pipeline.
 .DESCRIPTION
 Returns all activities in the pipeline, or only the activity whose name matches the supplied name.
 
+.LINK
+https://abbgrade.github.io/PsDataFactory/docs/Get-AdfActivity.html
+
+.LINK
+https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01
+
 .OUTPUTS
 System.Management.Automation.PSCustomObject. One or more pipeline activities.
 

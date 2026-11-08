@@ -5,6 +5,12 @@ Creates an If Condition activity.
 .DESCRIPTION
 Creates an If Condition activity with the specified expression and optional dependencies.
 
+.LINK
+https://abbgrade.github.io/PsDataFactory/docs/New-AdfIfCondition.html
+
+.LINK
+https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01
+
 .OUTPUTS
 System.Management.Automation.PSCustomObject. The If Condition activity definition.
 

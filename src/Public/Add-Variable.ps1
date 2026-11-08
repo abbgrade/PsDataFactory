@@ -5,6 +5,12 @@ Adds a variable definition to a pipeline.
 .DESCRIPTION
 Adds a variable with the specified type to the pipeline's variables collection. If a non-empty default value is provided, it is added to the variable definition.
 
+.LINK
+https://abbgrade.github.io/PsDataFactory/docs/Add-AdfVariable.html
+
+.LINK
+https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01
+
 .EXAMPLE
 $pipeline | Add-AdfVariable -Name 'RecordCount' -Type 'Int'
 Adds an Int variable named RecordCount.

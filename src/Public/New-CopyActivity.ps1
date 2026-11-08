@@ -5,6 +5,12 @@ Creates a Copy activity for an Azure Data Factory pipeline.
 .DESCRIPTION
 Creates a Copy activity with the selected source and sink types, dataset references, and optional source, sink, staging, timeout, dependency, and translation settings. For an Azure Databricks Delta Lake source and Delimited Text sink, staging settings are required.
 
+.LINK
+https://abbgrade.github.io/PsDataFactory/docs/New-AdfCopyActivity.html
+
+.LINK
+https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01
+
 .OUTPUTS
 System.Management.Automation.PSCustomObject. The Copy activity definition.
 

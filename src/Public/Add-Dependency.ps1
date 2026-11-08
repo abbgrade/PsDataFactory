@@ -5,6 +5,12 @@ Adds a dependency to a pipeline activity.
 .DESCRIPTION
 Adds a dependency on a predecessor activity to the specified activity's dependsOn collection. Each dependency can specify one or more conditions.
 
+.LINK
+https://abbgrade.github.io/PsDataFactory/docs/Add-AdfDependency.html
+
+.LINK
+https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01
+
 .EXAMPLE
 $activity | Add-AdfDependency -OnActivity $predecessorActivity -Condition Succeeded
 Adds a dependency that allows the activity to proceed when the predecessor succeeds.

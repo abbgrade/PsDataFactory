@@ -5,6 +5,12 @@ Creates a new Azure Data Factory pipeline activity that executes another pipelin
 .DESCRIPTION
 Creates and configures an ExecutePipeline activity that invokes another pipeline.
 
+.LINK
+https://abbgrade.github.io/PsDataFactory/docs/New-AdfPipelineActivity.html
+
+.LINK
+https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01
+
 .EXAMPLE
 New-AdfPipelineActivity -Name 'ExecuteChildPipeline' -PipelineName 'ChildPipelineName'
 Creates an activity that invokes the specified child pipeline.

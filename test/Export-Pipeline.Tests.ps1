@@ -3,15 +3,23 @@
 Describe Export-Pipeline {
     
     BeforeAll {
-        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -Force -ErrorAction Stop
+        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -ErrorAction Stop
     }
 
-    BeforeEach {
-        $Pipeline = New-AdfPipeline -Name MyPipeline -Description Test
-    }
+    Context UnitTests -Tag UnitTest {
+        BeforeEach {
+            # Arrange
+            $Pipeline = New-AdfPipeline -Name MyPipeline -Description Test
+        }
 
-    It works {
-        $Path = $Pipeline | Export-AdfPipeline -PipelinesDirectory $TestDrive -ErrorAction Stop
-        $Path | Should -Exist
+        It 'exports pipeline to file' {
+            # Act
+            $Path = $Pipeline | Export-AdfPipeline -PipelinesDirectory $TestDrive -ErrorAction Stop
+
+            # Assert
+            $Path | Should -Exist
+            $Path.Name | Should -Be 'MyPipeline.json'
+            (Get-Content -Raw -Path $Path | ConvertFrom-Json).name | Should -Be $Pipeline.name
+        }
     }
 }

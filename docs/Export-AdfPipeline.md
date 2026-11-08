@@ -1,14 +1,14 @@
 ---
 external help file: PsDataFactory-help.xml
 Module Name: PsDataFactory
-online version:
+online version: https://abbgrade.github.io/PsDataFactory/docs/Export-AdfPipeline.html
 schema: 2.0.0
 ---
 
 # Export-AdfPipeline
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Exports a pipeline as a JSON file.
 
 ## SYNTAX
 
@@ -18,21 +18,21 @@ Export-AdfPipeline [-Pipeline] <Object> [-PipelinesDirectory] <DirectoryInfo>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Serializes the pipeline to JSON and writes it to a file named after the pipeline in the existing destination directory.
+Outputs the resulting file path.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+$pipeline | Export-AdfPipeline -PipelinesDirectory (Get-Item .\pipelines)
+Writes the pipeline JSON file to the pipelines directory.
+```
 
 ## PARAMETERS
 
 ### -Pipeline
-{{ Fill Pipeline Description }}
+The pipeline to serialize.
 
 ```yaml
 Type: Object
@@ -40,14 +40,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -PipelinesDirectory
-{{ Fill PipelinesDirectory Description }}
+The existing directory in which to write the pipeline JSON file.
 
 ```yaml
 Type: DirectoryInfo
@@ -55,7 +55,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -81,11 +81,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Object
-
 ## OUTPUTS
 
-### System.Object
+### System.IO.FileInfo. The path of the exported pipeline file.
 ## NOTES
 
 ## RELATED LINKS
+
+[https://abbgrade.github.io/PsDataFactory/docs/Export-AdfPipeline.html](https://abbgrade.github.io/PsDataFactory/docs/Export-AdfPipeline.html)
+
+[https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01](https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01)
+

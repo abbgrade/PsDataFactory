@@ -1,38 +1,71 @@
 #Requires -Modules @{ ModuleName='Pester'; ModuleVersion='5.0.0' }, PsDac
 
 Describe Edit-Pipeline {
-    
+
     BeforeAll {
-        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -Force -ErrorAction Stop
+        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -ErrorAction Stop
     }
 
-    BeforeEach {
-        $Pipeline = New-AdfPipeline -Name MyPipeline -Description Test
-        $ActivityA = New-AdfPipelineActivity -Name A -PipelineName A
-        $ActivityB = New-AdfPipelineActivity -Name B -PipelineName B
-        $ActivityB | Add-AdfDependency -OnActivity $ActivityA -Condition Succeeded
-        $Pipeline | Add-AdfActivity $ActivityB
-        $Pipeline | Add-AdfActivity $ActivityA
-    }
-
-    It works {
-        $Pipeline | Edit-AdfPipeline -Operation InvertDependencies
-    }
-
-    Context Imported {      
-
+    Context UnitTests -Tag UnitTest {
         BeforeEach {
-            $Path = $Pipeline | Export-AdfPipeline -PipelinesDirectory $TestDrive -ErrorAction Stop
-            $ImportedPipeline = $Path | Import-AdfPipeline -ErrorAction Stop
+            # Arrange
+            $Pipeline = New-AdfPipeline -Name MyPipeline -Description Test
+            $ActivityA = New-AdfPipelineActivity -Name A -PipelineName A
+            $ActivityB = New-AdfPipelineActivity -Name B -PipelineName B
+            $ActivityB | Add-AdfDependency -OnActivity $ActivityA -Condition Succeeded
+            $Pipeline | Add-AdfActivity $ActivityB
+            $Pipeline | Add-AdfActivity $ActivityA
         }
 
-        It works {
-            $ImportedPipeline | Edit-AdfPipeline -Operation InvertDependencies -ErrorAction Stop
-            $DependencyA = $ImportedPipeline | Get-AdfActivity -Name A | Get-AdfDependency
-            $DependencyA | Should -Not -BeNullOrEmpty
+        It 'inverts pipeline dependencies' {
+            # Act
+            $Pipeline | Edit-AdfPipeline -Operation InvertDependencies
+
+            # Assert
+            $DependencyA = $Pipeline | Get-AdfActivity -Name A | Get-AdfDependency
             $DependencyA.Activity | Should -Be B
-            $DependencyB = $ImportedPipeline | Get-AdfActivity -Name B | Get-AdfDependency
+            $DependencyA.dependencyConditions.Count | Should -Be 1
+            $DependencyA.dependencyConditions[0] | Should -Be 'Succeeded'
+            $DependencyB = $Pipeline | Get-AdfActivity -Name B | Get-AdfDependency
             $DependencyB | Should -BeNullOrEmpty
+        }
+
+        It 'preserves multiple conditions when inverting a dependency' {
+            # Arrange
+            $ActivityB.dependsOn[0].dependencyConditions = @('Succeeded', 'Failed')
+
+            # Act
+            $Pipeline | Edit-AdfPipeline -Operation InvertDependencies -ErrorAction Stop
+
+            # Assert
+            $dependency = $Pipeline | Get-AdfActivity -Name A | Get-AdfDependency
+            $dependency.activity | Should -Be 'B'
+            $dependency.dependencyConditions.Count | Should -Be 2
+            $dependency.dependencyConditions[0] | Should -Be 'Succeeded'
+            $dependency.dependencyConditions[1] | Should -Be 'Failed'
+            $ActivityB.dependsOn | Should -BeNullOrEmpty
+        }
+
+        Context Imported {
+            BeforeEach {
+                # Arrange
+                $Path = $Pipeline | Export-AdfPipeline -PipelinesDirectory $TestDrive -ErrorAction Stop
+                $ImportedPipeline = $Path | Import-AdfPipeline -ErrorAction Stop
+            }
+
+            It 'inverts dependencies in imported pipeline' {
+                # Act
+                $ImportedPipeline | Edit-AdfPipeline -Operation InvertDependencies -ErrorAction Stop
+
+                # Assert
+                $DependencyA = $ImportedPipeline | Get-AdfActivity -Name A | Get-AdfDependency
+                $DependencyA | Should -Not -BeNullOrEmpty
+                $DependencyA.Activity | Should -Be B
+                $DependencyA.dependencyConditions.Count | Should -Be 1
+                $DependencyA.dependencyConditions[0] | Should -Be 'Succeeded'
+                $DependencyB = $ImportedPipeline | Get-AdfActivity -Name B | Get-AdfDependency
+                $DependencyB | Should -BeNullOrEmpty
+            }
         }
     }
 }

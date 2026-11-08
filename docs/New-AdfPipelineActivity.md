@@ -1,14 +1,14 @@
 ---
 external help file: PsDataFactory-help.xml
 Module Name: PsDataFactory
-online version:
+online version: https://abbgrade.github.io/PsDataFactory/docs/New-AdfPipelineActivity.html
 schema: 2.0.0
 ---
 
 # New-AdfPipelineActivity
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new Azure Data Factory pipeline activity that executes another pipeline.
 
 ## SYNTAX
 
@@ -18,51 +18,20 @@ New-AdfPipelineActivity [-Name] <String> [-PipelineName] <String> [[-Timeout] <O
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates and configures an ExecutePipeline activity that invokes another pipeline.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+New-AdfPipelineActivity -Name 'ExecuteChildPipeline' -PipelineName 'ChildPipelineName'
+Creates an activity that invokes the specified child pipeline.
+```
 
 ## PARAMETERS
 
-### -DependsOn
-{{ Fill DependsOn Description }}
-
-```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-{{ Fill Name Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PipelineName
-{{ Fill PipelineName Description }}
+The name of the pipeline activity.
 
 ```yaml
 Type: String
@@ -76,8 +45,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PipelineName
+The name of the pipeline that this activity will execute.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Timeout
-{{ Fill Timeout Description }}
+The timeout duration for the activity.
+Defaults to 12 hours.
 
 ```yaml
 Type: Object
@@ -85,8 +70,24 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
-Default value: None
+Position: 3
+Default value: 0.12:00:00
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DependsOn
+The activity dependencies.
+Defaults to an empty array.
+
+```yaml
+Type: Object
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: @()
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -111,11 +112,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS
+
+[https://abbgrade.github.io/PsDataFactory/docs/New-AdfPipelineActivity.html](https://abbgrade.github.io/PsDataFactory/docs/New-AdfPipelineActivity.html)
+
+[https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01](https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01)
+

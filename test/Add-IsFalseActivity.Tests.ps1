@@ -3,16 +3,23 @@
 Describe Add-IsFalseActivity {
     
     BeforeAll {
-        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -Force -ErrorAction Stop
+        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -ErrorAction Stop
     }
 
-    BeforeEach {
-        $IfCondition = New-AdfIfCondition -Name MyIfCondition -Expression '1=1'
-        $LinkedServiceReference = New-AdfLinkedServiceReference -Name MyLinkedService
-        $Activity = New-AdfSqlServerStoredProcedure -Name MyAcitivity -LinkedServiceReference $LinkedServiceReference -StoredProcedureExpression usp_doit
-    }
+    Context UnitTests -Tag UnitTest {
+        BeforeEach {
+            # Arrange
+            $IfCondition = New-AdfIfCondition -Name MyIfCondition -Expression '1=1'
+            $LinkedServiceReference = New-AdfLinkedServiceReference -Name MyLinkedService
+            $Activity = New-AdfSqlServerStoredProcedure -Name MyAcitivity -LinkedServiceReference $LinkedServiceReference -StoredProcedureExpression usp_doit
+        }
 
-    It Works {
-        $IfCondition | Add-AdfIsFalseActivity -Activity $Activity -ErrorAction Stop
+        It 'adds activity to false branch' {
+            # Act
+            $IfCondition | Add-AdfIsFalseActivity -Activity $Activity -ErrorAction Stop
+
+            # Assert
+            $IfCondition.typeProperties.ifFalseActivities | Should -Contain $Activity
+        }
     }
 }

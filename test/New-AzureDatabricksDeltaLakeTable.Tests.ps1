@@ -3,19 +3,29 @@
 Describe New-AzureDatabricksDeltaLakeTable {
 
     BeforeAll {
-        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -Force -ErrorAction Stop
+        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -ErrorAction Stop
     }
 
-    BeforeEach {
-        $LinkedServiceReference = New-AdfLinkedServiceReference -Name MyLinkedService
-    }
+    Context UnitTests -Tag UnitTest {
+        BeforeEach {
+            # Arrange
+            $LinkedServiceReference = New-AdfLinkedServiceReference -Name MyLinkedService
+        }
 
-    It works {
-        New-AdfAzureDatabricksDeltaLakeTable -Name MyDataset -SchemaName MySchema -TableName MyTable -LinkedServiceReference $LinkedServiceReference -ErrorAction Stop
-    }
+        It 'creates Azure Databricks Delta Lake dataset' {
+            # Act
+            $dataset = New-AdfAzureDatabricksDeltaLakeTable -Name MyDataset -SchemaName MySchema -TableName MyTable -LinkedServiceReference $LinkedServiceReference -ErrorAction Stop
 
-    It 'has property <schema>' {
-        $dataset = New-AdfAzureDatabricksDeltaLakeTable -Name MyDataset -SchemaName MySchema -TableName MyTable -LinkedServiceReference $LinkedServiceReference -ErrorAction Stop
-        $dataset.properties.PSobject.Properties.name -contains "schema" | Should -BeTrue
+            # Assert
+            $dataset | Should -Not -BeNullOrEmpty
+        }
+
+        It 'includes schema property' {
+            # Act
+            $dataset = New-AdfAzureDatabricksDeltaLakeTable -Name MyDataset -SchemaName MySchema -TableName MyTable -LinkedServiceReference $LinkedServiceReference -ErrorAction Stop
+
+            # Assert
+            $dataset.properties.PSobject.Properties.name -contains 'schema' | Should -BeTrue
+        }
     }
 }

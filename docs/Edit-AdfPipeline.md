@@ -1,14 +1,14 @@
 ---
 external help file: PsDataFactory-help.xml
 Module Name: PsDataFactory
-online version:
+online version: https://abbgrade.github.io/PsDataFactory/docs/Edit-AdfPipeline.html
 schema: 2.0.0
 ---
 
 # Edit-AdfPipeline
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Applies a supported edit operation to a pipeline.
 
 ## SYNTAX
 
@@ -18,37 +18,21 @@ Edit-AdfPipeline [-Pipeline] <Object> [-Operation] <String> [-ProgressAction <Ac
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Performs the requested operation on the pipeline.
+The supported operation, InvertDependencies, reverses the direction of dependencies between activities.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+$pipeline | Edit-AdfPipeline -Operation InvertDependencies
+Reverses the pipeline's activity dependencies.
+```
 
 ## PARAMETERS
 
-### -Operation
-{{ Fill Operation Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-Accepted values: InvertDependencies
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Pipeline
-{{ Fill Pipeline Description }}
+The pipeline to edit.
 
 ```yaml
 Type: Object
@@ -56,9 +40,25 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Operation
+The operation to perform.
+Currently supported value: InvertDependencies.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -82,11 +82,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Object
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS
+
+[https://abbgrade.github.io/PsDataFactory/docs/Edit-AdfPipeline.html](https://abbgrade.github.io/PsDataFactory/docs/Edit-AdfPipeline.html)
+
+[https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01](https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01)
+

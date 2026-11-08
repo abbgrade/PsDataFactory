@@ -3,19 +3,31 @@
 Describe New-SqlServerTable {
 
     BeforeAll {
-        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -Force -ErrorAction Stop
+        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -ErrorAction Stop
     }
 
-    BeforeEach {
-        $LinkedServiceReference = New-AdfLinkedServiceReference -Name MyLinkedService
-    }
+    Context UnitTests -Tag UnitTest {
+        BeforeEach {
+            # Arrange
+            $LinkedServiceReference = New-AdfLinkedServiceReference -Name MyLinkedService
+        }
+        It 'creates SQL Server dataset' {
+            # Arrange
+            $datasetName = 'MyDataset'
 
-    It works {
-        New-AdfSqlServerTable -Name MyDataset -TableName MyTable -LinkedServiceReference $LinkedServiceReference -ErrorAction Stop
-    }
+            # Act
+            $dataset = New-AdfSqlServerTable -Name $datasetName -TableName MyTable -LinkedServiceReference $LinkedServiceReference -ErrorAction Stop
 
-    It 'has property <structure>' {
-        $dataset = New-AdfSqlServerTable -Name MyDataset -TableName MyTable -LinkedServiceReference $LinkedServiceReference -ErrorAction Stop
-        $dataset.properties.PSobject.Properties.name -contains "structure" | Should -BeTrue
+            # Assert
+            $dataset | Should -Not -BeNullOrEmpty
+        }
+
+        It 'includes structure property' {
+            # Act
+            $dataset = New-AdfSqlServerTable -Name MyDataset -TableName MyTable -LinkedServiceReference $LinkedServiceReference -ErrorAction Stop
+
+            # Assert
+            $dataset.properties.PSobject.Properties.name -contains 'structure' | Should -BeTrue
+        }
     }
 }

@@ -1,14 +1,14 @@
 ---
 external help file: PsDataFactory-help.xml
 Module Name: PsDataFactory
-online version:
+online version: https://abbgrade.github.io/PsDataFactory/docs/New-AdfCopyActivity.html
 schema: 2.0.0
 ---
 
 # New-AdfCopyActivity
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a Copy activity for an Azure Data Factory pipeline.
 
 ## SYNTAX
 
@@ -21,130 +21,24 @@ New-AdfCopyActivity [-Name] <String> [-Source] <PSObject> [-SourceType] <Object>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a Copy activity with the selected source and sink types, dataset references, and optional source, sink, staging, timeout, dependency, and translation settings.
+For an Azure Databricks Delta Lake source and Delimited Text sink, staging settings are required.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+New-AdfCopyActivity -Name 'CopyOrders' -Source $source -SourceType AzureSqlSource -Sink $sink -SinkType AzureSqlSink
+Creates a Copy activity from an Azure SQL source to an Azure SQL sink.
+```
 
 ## PARAMETERS
 
-### -AdditionalSourceColumns
-{{ Fill AdditionalSourceColumns Description }}
-
-```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DependsOn
-{{ Fill DependsOn Description }}
-
-```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 9
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-{{ Fill Name Description }}
+The activity name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Sink
-{{ Fill Sink Description }}
-
-```yaml
-Type: PSObject
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SinkStagingSettings
-{{ Fill SinkStagingSettings Description }}
-
-```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 11
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SinkType
-{{ Fill SinkType Description }}
-
-```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-Accepted values: AzureSqlSink, SqlSink, DelimitedTextSink, AzureDatabricksDeltaLakeSink
-
-Required: True
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SinkWriteBehavior
-{{ Fill SinkWriteBehavior Description }}
-
-```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Source
-{{ Fill Source Description }}
-
-```yaml
-Type: PSObject
 Parameter Sets: (All)
 Aliases:
 
@@ -155,8 +49,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceQueryTimeout
-{{ Fill SourceQueryTimeout Description }}
+### -Source
+The source dataset reference.
+
+```yaml
+Type: PSObject
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceType
+The Copy activity source type.
+
+```yaml
+Type: Object
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AdditionalSourceColumns
+Optional additional source columns.
 
 ```yaml
 Type: Object
@@ -170,39 +94,53 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceType
-{{ Fill SourceType Description }}
+### -SourceQueryTimeout
+Optional timeout for the source query.
 
 ```yaml
 Type: Object
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureSqlSource, SqlSource, DelimitedTextSource, AzureDatabricksDeltaLakeSource
 
-Required: True
-Position: 2
+Required: False
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SqlWriterUseTableLock
-{{ Fill SqlWriterUseTableLock Description }}
+### -Sink
+The sink dataset reference.
 
 ```yaml
-Type: SwitchParameter
+Type: PSObject
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Timeout
-{{ Fill Timeout Description }}
+### -SinkType
+The Copy activity sink type.
+
+```yaml
+Type: Object
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 7
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SinkWriteBehavior
+Optional sink store settings that define how data is written.
 
 ```yaml
 Type: Object
@@ -216,8 +154,40 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Translator
-{{ Fill Translator Description }}
+### -SqlWriterUseTableLock
+When specified, enables the SQL writer table lock setting.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Timeout
+The activity timeout.
+Defaults to 12 hours.
+
+```yaml
+Type: Object
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
+Default value: 0.12:00:00
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DependsOn
+The activity dependencies.
+Defaults to an empty array.
 
 ```yaml
 Type: Object
@@ -226,6 +196,36 @@ Aliases:
 
 Required: False
 Position: 10
+Default value: @()
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Translator
+Optional column translator configuration.
+
+```yaml
+Type: Object
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 11
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SinkStagingSettings
+Optional staging settings for the sink.
+
+```yaml
+Type: Object
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 12
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -251,11 +251,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
+### System.Management.Automation.PSCustomObject. The Copy activity definition.
 ## NOTES
 
 ## RELATED LINKS
+
+[https://abbgrade.github.io/PsDataFactory/docs/New-AdfCopyActivity.html](https://abbgrade.github.io/PsDataFactory/docs/New-AdfCopyActivity.html)
+
+[https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01](https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01)
+

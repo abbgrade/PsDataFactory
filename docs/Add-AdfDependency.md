@@ -1,38 +1,38 @@
 ---
 external help file: PsDataFactory-help.xml
 Module Name: PsDataFactory
-online version:
+online version: https://abbgrade.github.io/PsDataFactory/docs/Add-AdfDependency.html
 schema: 2.0.0
 ---
 
 # Add-AdfDependency
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Adds a dependency to a pipeline activity.
 
 ## SYNTAX
 
 ```
-Add-AdfDependency [-Activity] <PSObject> [-OnActivity] <Object> [-Condition] <Object>
+Add-AdfDependency [-Activity] <PSObject> [-OnActivity] <PSObject> [-Condition] <String[]>
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Adds a dependency on a predecessor activity to the specified activity's dependsOn collection.
+Each dependency can specify one or more conditions.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+$activity | Add-AdfDependency -OnActivity $predecessorActivity -Condition Succeeded
+Adds a dependency that allows the activity to proceed when the predecessor succeeds.
+```
 
 ## PARAMETERS
 
 ### -Activity
-{{ Fill Activity Description }}
+The pipeline activity to which the dependency will be added.
 
 ```yaml
 Type: PSObject
@@ -40,17 +40,17 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Condition
-{{ Fill Condition Description }}
+### -OnActivity
+The predecessor activity to add as a dependency.
 
 ```yaml
-Type: Object
+Type: PSObject
 Parameter Sets: (All)
 Aliases:
 
@@ -61,16 +61,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OnActivity
-{{ Fill OnActivity Description }}
+### -Condition
+One or more conditions: Succeeded, Failed, Completed, or Skipped.
 
 ```yaml
-Type: Object
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -96,11 +96,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Management.Automation.PSObject
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS
+
+[https://abbgrade.github.io/PsDataFactory/docs/Add-AdfDependency.html](https://abbgrade.github.io/PsDataFactory/docs/Add-AdfDependency.html)
+
+[https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01](https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01)
+

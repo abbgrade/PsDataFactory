@@ -1,14 +1,14 @@
 ---
 external help file: PsDataFactory-help.xml
 Module Name: PsDataFactory
-online version:
+online version: https://abbgrade.github.io/PsDataFactory/docs/New-AdfDatabricksPythonActivity.html
 schema: 2.0.0
 ---
 
 # New-AdfDatabricksPythonActivity
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates an Azure Databricks Python activity.
 
 ## SYNTAX
 
@@ -19,21 +19,36 @@ New-AdfDatabricksPythonActivity [-Name] <String> [[-Timeout] <Object>] [-PythonF
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates an activity that runs the specified Python file using the supplied Azure Databricks linked service.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+New-AdfDatabricksPythonActivity -Name 'RunNotebookScript' -PythonFilePath 'dbfs:/main.py' -LinkedServiceReference $linkedService
+Creates an activity that runs the specified Python file.
+```
 
 ## PARAMETERS
 
-### -DependsOn
-{{ Fill DependsOn Description }}
+### -Name
+The activity name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Timeout
+The activity timeout.
+Defaults to 12 hours.
 
 ```yaml
 Type: Object
@@ -41,17 +56,17 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
-Default value: None
+Position: 2
+Default value: 0.12:00:00
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LinkedServiceReference
-{{ Fill LinkedServiceReference Description }}
+### -PythonFilePath
+The path of the Python file to run.
 
 ```yaml
-Type: PSObject
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -62,38 +77,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-{{ Fill Name Description }}
+### -LinkedServiceReference
+The Azure Databricks linked service reference.
 
 ```yaml
-Type: String
+Type: PSObject
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PythonFilePath
-{{ Fill PythonFilePath Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Timeout
-{{ Fill Timeout Description }}
+### -DependsOn
+The activity dependencies.
+Defaults to an empty array.
 
 ```yaml
 Type: Object
@@ -101,8 +102,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
-Default value: None
+Position: 5
+Default value: @()
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -127,11 +128,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
+### System.Management.Automation.PSCustomObject. The activity definition.
 ## NOTES
 
 ## RELATED LINKS
+
+[https://abbgrade.github.io/PsDataFactory/docs/New-AdfDatabricksPythonActivity.html](https://abbgrade.github.io/PsDataFactory/docs/New-AdfDatabricksPythonActivity.html)
+
+[https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01](https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01)
+

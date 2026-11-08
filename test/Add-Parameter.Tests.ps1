@@ -3,14 +3,24 @@
 Describe Add-Parameter {
     
     BeforeAll {
-        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -Force -ErrorAction Stop
+        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -ErrorAction Stop
     }
 
-    BeforeEach {
-        $Pipeline = New-AdfPipeline -Name MyPipeline -Description Test
-    }
+    Context UnitTests -Tag UnitTest {
+        BeforeEach {
+            # Arrange
+            $Pipeline = New-AdfPipeline -Name MyPipeline -Description Test
+        }
 
-    It Works {
-        $Pipeline | Add-AdfParameter -Name MyParameter -Type MyType -ErrorAction Stop
+        It 'adds parameter to pipeline' {
+            # Arrange
+            $parameterName = 'MyParameter'
+
+            # Act
+            $Pipeline | Add-AdfParameter -Name $parameterName -Type MyType -ErrorAction Stop
+
+            # Assert
+            $Pipeline.properties.parameters.$parameterName.type | Should -Be 'MyType'
+        }
     }
 }

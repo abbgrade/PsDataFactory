@@ -3,16 +3,19 @@
 Describe New-PipelineActivity {
     
     BeforeAll {
-        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -Force -ErrorAction Stop
+        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -ErrorAction Stop
     }
 
-    BeforeEach {
-        $Pipeline = New-AdfPipeline -Name MyPipeline -Description Test
-    }
+    Context UnitTests -Tag UnitTest {
+        It 'creates activity that waits for pipeline completion' {
+            # Arrange
+            $activityName = 'execute'
 
-    It works {
-        $activity = New-AdfPipelineActivity -Name execute -PipelineName MyOtherPipeline
-        $activity.typeProperties.waitOnCompletion | Should -Be true
-    }
+            # Act
+            $activity = New-AdfPipelineActivity -Name $activityName -PipelineName MyOtherPipeline
 
+            # Assert
+            $activity.typeProperties.waitOnCompletion | Should -BeTrue
+        }
+    }
 }

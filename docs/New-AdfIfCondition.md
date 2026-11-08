@@ -1,14 +1,14 @@
 ---
 external help file: PsDataFactory-help.xml
 Module Name: PsDataFactory
-online version:
+online version: https://abbgrade.github.io/PsDataFactory/docs/New-AdfIfCondition.html
 schema: 2.0.0
 ---
 
 # New-AdfIfCondition
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates an If Condition activity.
 
 ## SYNTAX
 
@@ -18,36 +18,20 @@ New-AdfIfCondition [-Name] <String> [-Expression] <String> [[-DependsOn] <Object
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates an If Condition activity with the specified expression and optional dependencies.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+New-AdfIfCondition -Name 'IsReady' -Expression '@equals(variables(''ready''), true)'
+Creates an If Condition activity with the specified expression.
+```
 
 ## PARAMETERS
 
-### -DependsOn
-{{ Fill DependsOn Description }}
-
-```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Expression
-{{ Fill Expression Description }}
+### -Name
+The activity name.
 
 ```yaml
 Type: String
@@ -61,8 +45,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-{{ Fill Name Description }}
+### -Expression
+The expression evaluated by the If Condition activity.
 
 ```yaml
 Type: String
@@ -70,8 +54,24 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 2
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DependsOn
+The activity dependencies.
+Defaults to an empty array.
+
+```yaml
+Type: Object
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: @()
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -96,11 +96,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
+### System.Management.Automation.PSCustomObject. The If Condition activity definition.
 ## NOTES
 
 ## RELATED LINKS
+
+[https://abbgrade.github.io/PsDataFactory/docs/New-AdfIfCondition.html](https://abbgrade.github.io/PsDataFactory/docs/New-AdfIfCondition.html)
+
+[https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01](https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01)
+

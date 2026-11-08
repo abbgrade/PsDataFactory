@@ -1,14 +1,14 @@
 ---
 external help file: PsDataFactory-help.xml
 Module Name: PsDataFactory
-online version:
+online version: https://abbgrade.github.io/PsDataFactory/docs/New-AdfLinkedServiceReference.html
 schema: 2.0.0
 ---
 
 # New-AdfLinkedServiceReference
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a linked service reference.
 
 ## SYNTAX
 
@@ -18,21 +18,20 @@ New-AdfLinkedServiceReference [-Name] <String> [[-Parameters] <PSObject>] [-Prog
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a reference object containing the linked service name and reference type, with optional parameters.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+New-AdfLinkedServiceReference -Name 'StorageLinkedService'
+Creates a reference to the specified linked service.
+```
 
 ## PARAMETERS
 
 ### -Name
-{{ Fill Name Description }}
+The linked service name.
 
 ```yaml
 Type: String
@@ -40,14 +39,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Parameters
-{{ Fill Parameters Description }}
+Optional parameters to include in the reference.
 
 ```yaml
 Type: PSObject
@@ -55,7 +54,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -81,11 +80,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
+### System.Management.Automation.PSCustomObject. The linked service reference.
 ## NOTES
 
 ## RELATED LINKS
+
+[https://abbgrade.github.io/PsDataFactory/docs/New-AdfLinkedServiceReference.html](https://abbgrade.github.io/PsDataFactory/docs/New-AdfLinkedServiceReference.html)
+
+[https://learn.microsoft.com/en-us/rest/api/datafactory/linked-services/create-or-update?view=rest-datafactory-2018-06-01](https://learn.microsoft.com/en-us/rest/api/datafactory/linked-services/create-or-update?view=rest-datafactory-2018-06-01)
+

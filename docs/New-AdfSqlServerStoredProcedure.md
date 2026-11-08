@@ -1,14 +1,14 @@
 ---
 external help file: PsDataFactory-help.xml
 Module Name: PsDataFactory
-online version:
+online version: https://abbgrade.github.io/PsDataFactory/docs/New-AdfSqlServerStoredProcedure.html
 schema: 2.0.0
 ---
 
 # New-AdfSqlServerStoredProcedure
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a SQL Server stored procedure activity.
 
 ## SYNTAX
 
@@ -26,51 +26,21 @@ New-AdfSqlServerStoredProcedure -Name <String> -LinkedServiceReference <PSObject
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates an activity that invokes a stored procedure using the supplied linked service.
+Specify either a literal procedure name or an expression.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+New-AdfSqlServerStoredProcedure -Name 'RunProcedure' -LinkedServiceReference $linkedService -StoredProcedureName 'dbo.LoadData'
+Creates an activity that invokes the specified stored procedure.
+```
 
 ## PARAMETERS
 
-### -DependsOn
-{{ Fill DependsOn Description }}
-
-```yaml
-Type: Object
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LinkedServiceReference
-{{ Fill LinkedServiceReference Description }}
-
-```yaml
-Type: PSObject
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-{{ Fill Name Description }}
+The activity name.
 
 ```yaml
 Type: String
@@ -84,8 +54,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LinkedServiceReference
+The linked service reference used to connect to SQL Server.
+
+```yaml
+Type: PSObject
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -StoredProcedureExpression
-{{ Fill StoredProcedureExpression Description }}
+An expression that resolves to the stored procedure name.
+Used with the Expression parameter set.
 
 ```yaml
 Type: String
@@ -100,7 +86,8 @@ Accept wildcard characters: False
 ```
 
 ### -StoredProcedureName
-{{ Fill StoredProcedureName Description }}
+The literal stored procedure name.
+Used with the Name parameter set.
 
 ```yaml
 Type: String
@@ -115,7 +102,8 @@ Accept wildcard characters: False
 ```
 
 ### -Timeout
-{{ Fill Timeout Description }}
+The activity timeout.
+Defaults to 12 hours.
 
 ```yaml
 Type: Object
@@ -124,7 +112,23 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: 0.12:00:00
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DependsOn
+The activity dependencies.
+Defaults to an empty array.
+
+```yaml
+Type: Object
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: @()
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -149,11 +153,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
+### System.Management.Automation.PSCustomObject. The stored procedure activity definition.
 ## NOTES
 
 ## RELATED LINKS
+
+[https://abbgrade.github.io/PsDataFactory/docs/New-AdfSqlServerStoredProcedure.html](https://abbgrade.github.io/PsDataFactory/docs/New-AdfSqlServerStoredProcedure.html)
+
+[https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01](https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01)
+

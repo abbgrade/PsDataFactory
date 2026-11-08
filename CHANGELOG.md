@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-11-08
+
+### Added
+
+- Added `Import-Dataflow` to import data flow definitions from JSON files.
+- Added `Get-Annotation` to return each pipeline annotation as a separate string output.
+- Added `Add-Annotation` to append one annotation.
+
+### Changed
+
+- Improved PlatyPS help for dependency and pipeline activity commands.
+- Added relevant Azure Data Factory REST API references to public function help.
+- Added hosted command help URLs to function source for PlatyPS online-version metadata.
+
+### Fixed
+
+- Allow `Add-Dependency` to accept multiple conditions, restoring pipeline dependency inversion.
+
 ## [0.7.0] - 2025-10-09
 
 ### Added

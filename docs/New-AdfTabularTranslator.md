@@ -1,14 +1,14 @@
 ---
 external help file: PsDataFactory-help.xml
 Module Name: PsDataFactory
-online version:
+online version: https://abbgrade.github.io/PsDataFactory/docs/New-AdfTabularTranslator.html
 schema: 2.0.0
 ---
 
 # New-AdfTabularTranslator
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates an empty tabular translator.
 
 ## SYNTAX
 
@@ -17,16 +17,15 @@ New-AdfTabularTranslator [-ProgressAction <ActionPreference>] [<CommonParameters
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Returns a translator object with type TabularTranslator and an empty columnMappings collection.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+$translator = New-AdfTabularTranslator
+Creates an empty tabular translator for subsequent column mappings.
+```
 
 ## PARAMETERS
 
@@ -50,11 +49,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
+### System.Management.Automation.PSCustomObject. The tabular translator.
 ## NOTES
 
 ## RELATED LINKS
+
+[https://abbgrade.github.io/PsDataFactory/docs/New-AdfTabularTranslator.html](https://abbgrade.github.io/PsDataFactory/docs/New-AdfTabularTranslator.html)
+
+[https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01](https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01)
+

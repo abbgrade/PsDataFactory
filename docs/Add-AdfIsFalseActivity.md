@@ -1,14 +1,14 @@
 ---
 external help file: PsDataFactory-help.xml
 Module Name: PsDataFactory
-online version:
+online version: https://abbgrade.github.io/PsDataFactory/docs/Add-AdfIsFalseActivity.html
 schema: 2.0.0
 ---
 
 # Add-AdfIsFalseActivity
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Adds an activity to the false branch of an If Condition activity.
 
 ## SYNTAX
 
@@ -18,36 +18,20 @@ Add-AdfIsFalseActivity -IfCondition <PSObject> [-Activity] <PSObject> [-Progress
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Appends the supplied activity to the If Condition activity's ifFalseActivities collection.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+$ifCondition | Add-AdfIsFalseActivity -Activity $fallbackActivity
+Adds the activity to the false branch.
+```
 
 ## PARAMETERS
 
-### -Activity
-{{ Fill Activity Description }}
-
-```yaml
-Type: PSObject
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -IfCondition
-{{ Fill IfCondition Description }}
+The If Condition activity to update.
 
 ```yaml
 Type: PSObject
@@ -58,6 +42,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Activity
+The activity to add to the false branch.
+
+```yaml
+Type: PSObject
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -81,11 +80,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Management.Automation.PSObject
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS
+
+[https://abbgrade.github.io/PsDataFactory/docs/Add-AdfIsFalseActivity.html](https://abbgrade.github.io/PsDataFactory/docs/Add-AdfIsFalseActivity.html)
+
+[https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01](https://learn.microsoft.com/en-us/rest/api/datafactory/pipelines/create-or-update?view=rest-datafactory-2018-06-01)
+

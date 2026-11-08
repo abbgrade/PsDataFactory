@@ -12,7 +12,9 @@ Describe New-TabularTranslator {
             $translator = New-AdfTabularTranslator -ErrorAction Stop
 
             # Assert
-            $translator | Should -Not -BeNullOrEmpty
+            $translator.type | Should -Be 'TabularTranslator'
+            $translator.PSObject.Properties.Name | Should -Contain 'columnMappings'
+            @($translator.columnMappings.PSObject.Properties).Count | Should -Be 0
         }
     }
 }

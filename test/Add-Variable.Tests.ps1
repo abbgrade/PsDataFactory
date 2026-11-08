@@ -22,5 +22,14 @@ Describe Add-Variable {
             # Assert
             $Pipeline.properties.variables.$variableName.type | Should -Be 'MyType'
         }
+
+        It 'adds a non-empty default value to the variable' {
+            # Act
+            $Pipeline | Add-AdfVariable -Name 'DefaultedVariable' -Type 'String' -DefaultValue 'ready' -ErrorAction Stop
+
+            # Assert
+            $Pipeline.properties.variables.DefaultedVariable.type | Should -Be 'String'
+            $Pipeline.properties.variables.DefaultedVariable.defaultValue | Should -Be 'ready'
+        }
     }
 }

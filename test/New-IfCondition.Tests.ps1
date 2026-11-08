@@ -16,6 +16,11 @@ Describe New-IfCondition {
 
             # Assert
             $ifCondition | Should -Not -BeNullOrEmpty
+            $ifCondition.name | Should -Be $conditionName
+            $ifCondition.type | Should -Be 'IfCondition'
+            $ifCondition.typeProperties.expression.value | Should -Be '1=1'
+            $ifCondition.typeProperties.expression.type | Should -Be 'Expression'
+            $ifCondition.typeProperties.ifFalseActivities | Should -BeNullOrEmpty
         }
     }
 }

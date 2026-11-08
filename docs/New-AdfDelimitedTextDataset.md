@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AdfDelimitedTextDataset
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a delimited text dataset definition.
 
 ## SYNTAX
 
@@ -19,21 +19,20 @@ New-AdfDelimitedTextDataset [-Name] <String> [[-LinkedServiceReference] <PSObjec
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a dataset definition for delimited text and configures its location and delimiter, escape, header, and quote settings.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+New-AdfDelimitedTextDataset -Name 'InputFile' -Location $location -ColumnDelimiter ',' -EscapeChar '\' -FirstRowAsHeader $true -QuoteChar '"'
+Creates a delimited text dataset definition.
+```
 
 ## PARAMETERS
 
-### -ColumnDelimiter
-{{ Fill ColumnDelimiter Description }}
+### -Name
+The dataset name.
 
 ```yaml
 Type: String
@@ -41,104 +40,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EscapeChar
-{{ Fill EscapeChar Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FirstRowAsHeader
-{{ Fill FirstRowAsHeader Description }}
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FolderName
-{{ Fill FolderName Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LinkedServiceReference
-{{ Fill LinkedServiceReference Description }}
-
-```yaml
-Type: PSObject
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-{{ Fill Location Description }}
-
-```yaml
-Type: PSObject
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 4
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-{{ Fill Name Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Parameters
-{{ Fill Parameters Description }}
+### -LinkedServiceReference
+The linked service reference for the dataset.
 
 ```yaml
 Type: PSObject
@@ -152,8 +61,54 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -QuoteChar
-{{ Fill QuoteChar Description }}
+### -Parameters
+The dataset parameters.
+Defaults to an empty object.
+
+```yaml
+Type: PSObject
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: @{}
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FolderName
+The optional dataset folder name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The location configuration for the delimited text data.
+
+```yaml
+Type: PSObject
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ColumnDelimiter
+The character used to separate columns.
 
 ```yaml
 Type: String
@@ -161,7 +116,52 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EscapeChar
+The escape character.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 7
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FirstRowAsHeader
+Specifies whether the first row is treated as a header.
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: 8
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -QuoteChar
+The quote character.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -187,11 +187,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
+### System.Management.Automation.PSCustomObject. The dataset definition.
 ## NOTES
 
 ## RELATED LINKS

@@ -1,21 +1,40 @@
+<#
+.SYNOPSIS
+Creates an Azure SQL table dataset definition.
+
+.DESCRIPTION
+Creates a dataset for an Azure SQL table, including its table name, linked service reference, parameters, and folder settings.
+
+.OUTPUTS
+System.Management.Automation.PSCustomObject. The dataset definition.
+
+.EXAMPLE
+New-AdfAzureSqlTable -Name 'Customers' -TableName 'dbo.Customers'
+Creates a dataset definition for the specified Azure SQL table.
+#>
 function New-AzureSqlTable {
 
     [CmdletBinding()]
     param (
+        # The dataset name.
         [Parameter( Mandatory )]
         [ValidateNotNullOrEmpty()]
         [string] $Name,
 
+        # The linked service reference associated with the dataset.
         [Parameter()]
         [PSCustomObject] $LinkedServiceReference,
 
+        # The dataset parameters. Defaults to an empty object.
         [Parameter()]
         [ValidateNotNull()]
         [PSCustomObject] $Parameters = @{},
 
+        # The optional dataset folder name.
         [Parameter()]
         [string] $FolderName,
 
+        # The Azure SQL table name.
         [Parameter( Mandatory )]
         [ValidateNotNullOrEmpty()]
         $TableName

@@ -76,6 +76,24 @@ Describe New-CopyActivity {
                 # Assert
                 $copyActivityAction | Should -Throw 'When SourceType is ''AzureDatabricksDeltaLakeSource'' and SinkType is ''DelimitedTextSink'', staging via ''SinkStagingSettings'' must be enabled'
             }
+
+            It 'enables staging when sink staging settings are supplied' {
+                # Arrange
+                $stagingSettings = [PSCustomObject]@{
+                    linkedServiceName = $LinkedServiceReference
+                    path = 'staging'
+                }
+
+                # Act
+                $copyActivity = New-AdfCopyActivity -Name MyCopyActivity `
+                    -Source $Source -SourceType AzureDatabricksDeltaLakeSource `
+                    -Sink $Sink -SinkType DelimitedTextSink `
+                    -SinkStagingSettings $stagingSettings -ErrorAction Stop
+
+                # Assert
+                $copyActivity.typeProperties.enableStaging | Should -BeTrue
+                $copyActivity.typeProperties.stagingSettings | Should -Be $stagingSettings
+            }
         }
     }
 }

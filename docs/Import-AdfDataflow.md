@@ -17,7 +17,8 @@ Import-AdfDataflow [-DataflowPath] <FileInfo> [-ProgressAction <ActionPreference
 ```
 
 ## DESCRIPTION
-Reads a JSON file and converts its contents to a PowerShell object.
+Reads a data flow definition from a JSON file and converts the JSON
+content to PowerShell objects.
 
 ## EXAMPLES
 
@@ -66,6 +67,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### System.Object
 ## NOTES
 
 ## RELATED LINKS

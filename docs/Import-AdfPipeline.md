@@ -8,7 +8,7 @@ schema: 2.0.0
 # Import-AdfPipeline
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Imports a pipeline from a JSON file.
 
 ## SYNTAX
 
@@ -17,21 +17,21 @@ Import-AdfPipeline [-PipelinePath] <FileInfo> [-ProgressAction <ActionPreference
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Reads the specified pipeline JSON file and converts its contents to a PowerShell object.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+Import-AdfPipeline -PipelinePath (Get-Item .\MyPipeline.json)
+Reads the pipeline from the specified JSON file.
+```
 
 ## PARAMETERS
 
 ### -PipelinePath
-{{ Fill PipelinePath Description }}
+The existing pipeline JSON file to import.
+The path can be supplied through pipeline input.
 
 ```yaml
 Type: FileInfo
@@ -39,7 +39,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -65,11 +65,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.IO.FileInfo
-
 ## OUTPUTS
 
-### System.Object
+### System.Management.Automation.PSCustomObject. The imported pipeline object.
 ## NOTES
 
 ## RELATED LINKS

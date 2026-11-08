@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AdfSqlServerTable
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a SQL Server table dataset definition.
 
 ## SYNTAX
 
@@ -18,51 +18,20 @@ New-AdfSqlServerTable [-Name] <String> [[-LinkedServiceReference] <PSObject>] [[
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a dataset for a SQL Server table, including its table name, linked service reference, parameters, and folder settings.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+New-AdfSqlServerTable -Name 'Customers' -TableName 'dbo.Customers'
+Creates a dataset definition for the specified SQL Server table.
+```
 
 ## PARAMETERS
 
-### -FolderName
-{{ Fill FolderName Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LinkedServiceReference
-{{ Fill LinkedServiceReference Description }}
-
-```yaml
-Type: PSObject
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
-{{ Fill Name Description }}
+The dataset name.
 
 ```yaml
 Type: String
@@ -70,14 +39,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
-{{ Fill Parameters Description }}
+### -LinkedServiceReference
+The linked service reference associated with the dataset.
 
 ```yaml
 Type: PSObject
@@ -91,8 +60,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Parameters
+The dataset parameters.
+Defaults to an empty object.
+
+```yaml
+Type: PSObject
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: @{}
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FolderName
+The optional dataset folder name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TableName
-{{ Fill TableName Description }}
+The SQL Server table name.
 
 ```yaml
 Type: String
@@ -100,7 +100,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 4
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -126,11 +126,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
+### System.Management.Automation.PSCustomObject. The dataset definition.
 ## NOTES
 
 ## RELATED LINKS

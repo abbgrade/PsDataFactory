@@ -3,7 +3,7 @@
 Adds a dependency to a pipeline activity.
 
 .DESCRIPTION
-Adds a dependency on a predecessor activity to the specified activity's dependsOn collection. Multiple dependencies can be added to the same activity, each with its own condition (Succeeded, Failed, Completed, or Skipped).
+Adds a dependency on a predecessor activity to the specified activity's dependsOn collection. Each dependency can specify one or more conditions.
 
 .EXAMPLE
 $activity | Add-AdfDependency -OnActivity $predecessorActivity -Condition Succeeded
@@ -22,10 +22,10 @@ function Add-Dependency {
         [Parameter( Mandatory )]
         [PsCustomObject] $OnActivity,
 
-        # The condition under which the activity should proceed. Valid values are Succeeded, Failed, Completed, and Skipped.
+        # One or more conditions: Succeeded, Failed, Completed, or Skipped.
         [Parameter( Mandatory )]
         [ValidateSet('Succeeded', 'Failed', 'Completed', 'Skipped')]
-        [string] $Condition
+        [string[]] $Condition
 
     )
 

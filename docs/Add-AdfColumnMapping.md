@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AdfColumnMapping
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Adds a source-to-sink column mapping to a tabular translator.
 
 ## SYNTAX
 
@@ -18,21 +18,35 @@ Add-AdfColumnMapping -Translator <PSObject> [-Source] <String> [-Sink] <String>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Adds an entry to the translator's columnMappings collection, using the supplied source and sink column names.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+$translator | Add-AdfColumnMapping -Source 'sourceId' -Sink 'targetId'
+Maps the source column to the named sink column.
+```
 
 ## PARAMETERS
 
-### -Sink
-{{ Fill Sink Description }}
+### -Translator
+The tabular translator to update.
+
+```yaml
+Type: PSObject
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Source
+The source column name.
 
 ```yaml
 Type: String
@@ -46,8 +60,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Source
-{{ Fill Source Description }}
+### -Sink
+The sink column name.
 
 ```yaml
 Type: String
@@ -55,24 +69,9 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 2
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Translator
-{{ Fill Translator Description }}
-
-```yaml
-Type: PSObject
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -96,11 +95,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Management.Automation.PSObject
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

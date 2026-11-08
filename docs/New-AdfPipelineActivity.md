@@ -61,8 +61,8 @@ Accept wildcard characters: False
 ```
 
 ### -Timeout
-The timeout duration for the activity execution.
-Default is '0.12:00:00' (12 hours).
+The timeout duration for the activity.
+Defaults to 12 hours.
 
 ```yaml
 Type: Object
@@ -77,7 +77,8 @@ Accept wildcard characters: False
 ```
 
 ### -DependsOn
-An array of dependencies for this activity.
+The activity dependencies.
+Defaults to an empty array.
 
 ```yaml
 Type: Object

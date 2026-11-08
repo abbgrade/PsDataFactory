@@ -1,19 +1,34 @@
+<#
+.SYNOPSIS
+Adds a column definition to a dataset structure.
+
+.DESCRIPTION
+Adds a named column and type to the dataset structure. Alternatively, accepts a SQL DAC model column and maps its data type to an Azure Data Factory type when that source type is supported.
+
+.EXAMPLE
+$dataset | Add-AdfColumn -Name 'CustomerId' -Type 'Int32'
+Adds a column definition to the dataset structure.
+#>
 function Add-Column {
 
     [CmdletBinding()]
     param (
+        # The dataset whose structure is updated.
         [Parameter( Mandatory, ValueFromPipeline )]
         [ValidateNotNullOrEmpty()]
         [PsCustomObject] $Dataset,
 
+        # The column name when using the Properties parameter set.
         [Parameter( Mandatory, Position = 0, ParameterSetName='Properties' )]
         [ValidateNotNullOrEmpty()]
         [string] $Name,
 
+        # The Azure Data Factory column type when using the Properties parameter set.
         [Parameter( Mandatory, Position = 1, ParameterSetName='Properties' )]
         [ValidateNotNullOrEmpty()]
         [string] $Type,
 
+        # A SQL DAC model column to map when using the Column parameter set.
         [Parameter( Mandatory, Position = 0, ParameterSetName='Column' )]
         [Microsoft.SqlServer.Dac.Model.TSqlObject] $Column
     )

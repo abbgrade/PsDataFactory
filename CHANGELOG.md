@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Improved PlatyPS help for dependency and pipeline activity commands.
 
+### Fixed
+
+- Allow `Add-Dependency` to accept multiple conditions, restoring pipeline dependency inversion.
+
 ## [0.7.0] - 2025-10-09
 
 ### Added

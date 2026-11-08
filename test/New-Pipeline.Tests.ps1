@@ -16,6 +16,9 @@ Describe New-Pipeline {
 
             # Assert
             $pipeline | Should -Not -BeNullOrEmpty
+            $pipeline.name | Should -Be $pipelineName
+            @($pipeline.properties.activities).Count | Should -Be 0
+            $pipeline.properties.annotations | Should -Contain 'THIS IS A GENERATED PIPELINE. CHANGES MAY BE OVERWRITTEN!'
         }
 
         It 'creates pipeline with description' {
@@ -27,6 +30,8 @@ Describe New-Pipeline {
 
             # Assert
             $pipeline | Should -Not -BeNullOrEmpty
+            $pipeline.name | Should -Be $pipelineName
+            $pipeline.properties.description | Should -Be 'Test'
         }
     }
 }

@@ -1,49 +1,76 @@
+<#
+.SYNOPSIS
+Creates a Copy activity for an Azure Data Factory pipeline.
+
+.DESCRIPTION
+Creates a Copy activity with the selected source and sink types, dataset references, and optional source, sink, staging, timeout, dependency, and translation settings. For an Azure Databricks Delta Lake source and Delimited Text sink, staging settings are required.
+
+.OUTPUTS
+System.Management.Automation.PSCustomObject. The Copy activity definition.
+
+.EXAMPLE
+New-AdfCopyActivity -Name 'CopyOrders' -Source $source -SourceType AzureSqlSource -Sink $sink -SinkType AzureSqlSink
+Creates a Copy activity from an Azure SQL source to an Azure SQL sink.
+#>
 function New-CopyActivity {
 
     [CmdletBinding()]
     param (
+        # The activity name.
         [Parameter( Mandatory )]
         [ValidateNotNullOrEmpty()]
         [string] $Name,
 
+        # The source dataset reference.
         [Parameter( Mandatory )]
         [ValidateNotNullOrEmpty()]
         [PsCustomObject] $Source,
 
+        # The Copy activity source type.
         [Parameter( Mandatory )]
         [ValidateSet('AzureSqlSource', 'SqlSource', 'DelimitedTextSource', 'AzureDatabricksDeltaLakeSource')]
         $SourceType,
 
+        # Optional additional source columns.
         [Parameter()]
         $AdditionalSourceColumns,
 
+        # Optional timeout for the source query.
         [Parameter()]
         $SourceQueryTimeout,
 
+        # The sink dataset reference.
         [Parameter( Mandatory )]
         [ValidateNotNullOrEmpty()]
         [PsCustomObject] $Sink,
 
+        # The Copy activity sink type.
         [Parameter( Mandatory )]
         [ValidateSet('AzureSqlSink', 'SqlSink', 'DelimitedTextSink', 'AzureDatabricksDeltaLakeSink')]
         $SinkType,
 
+        # Optional sink store settings that define how data is written.
         [Parameter()]
         $SinkWriteBehavior,
 
+        # When specified, enables the SQL writer table lock setting.
         [Parameter()]
         [switch] $SqlWriterUseTableLock,
 
+        # The activity timeout. Defaults to 12 hours.
         [Parameter()]
         [ValidateNotNullOrEmpty()]
         $Timeout = '0.12:00:00',
 
+        # The activity dependencies. Defaults to an empty array.
         [Parameter()]
         $DependsOn = @(),
 
+        # Optional column translator configuration.
         [Parameter()]
         $Translator,
 
+        # Optional staging settings for the sink.
         [Parameter()]
         $SinkStagingSettings
 

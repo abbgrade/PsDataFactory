@@ -13,13 +13,13 @@ Adds a dependency to a pipeline activity.
 ## SYNTAX
 
 ```
-Add-AdfDependency [-Activity] <PSObject> [-OnActivity] <PSObject> [-Condition] <String>
+Add-AdfDependency [-Activity] <PSObject> [-OnActivity] <PSObject> [-Condition] <String[]>
  [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Adds a dependency on a predecessor activity to the specified activity's dependsOn collection.
-Multiple dependencies can be added to the same activity, each with its own condition (Succeeded, Failed, Completed, or Skipped).
+Each dependency can specify one or more conditions.
 
 ## EXAMPLES
 
@@ -62,11 +62,10 @@ Accept wildcard characters: False
 ```
 
 ### -Condition
-The condition under which the activity should proceed.
-Valid values are Succeeded, Failed, Completed, and Skipped.
+One or more conditions: Succeeded, Failed, Completed, or Skipped.
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 

@@ -24,8 +24,26 @@ Describe Edit-Pipeline {
             # Assert
             $DependencyA = $Pipeline | Get-AdfActivity -Name A | Get-AdfDependency
             $DependencyA.Activity | Should -Be B
+            $DependencyA.dependencyConditions.Count | Should -Be 1
+            $DependencyA.dependencyConditions[0] | Should -Be 'Succeeded'
             $DependencyB = $Pipeline | Get-AdfActivity -Name B | Get-AdfDependency
             $DependencyB | Should -BeNullOrEmpty
+        }
+
+        It 'preserves multiple conditions when inverting a dependency' {
+            # Arrange
+            $ActivityB.dependsOn[0].dependencyConditions = @('Succeeded', 'Failed')
+
+            # Act
+            $Pipeline | Edit-AdfPipeline -Operation InvertDependencies -ErrorAction Stop
+
+            # Assert
+            $dependency = $Pipeline | Get-AdfActivity -Name A | Get-AdfDependency
+            $dependency.activity | Should -Be 'B'
+            $dependency.dependencyConditions.Count | Should -Be 2
+            $dependency.dependencyConditions[0] | Should -Be 'Succeeded'
+            $dependency.dependencyConditions[1] | Should -Be 'Failed'
+            $ActivityB.dependsOn | Should -BeNullOrEmpty
         }
 
         Context Imported {
@@ -43,6 +61,8 @@ Describe Edit-Pipeline {
                 $DependencyA = $ImportedPipeline | Get-AdfActivity -Name A | Get-AdfDependency
                 $DependencyA | Should -Not -BeNullOrEmpty
                 $DependencyA.Activity | Should -Be B
+                $DependencyA.dependencyConditions.Count | Should -Be 1
+                $DependencyA.dependencyConditions[0] | Should -Be 'Succeeded'
                 $DependencyB = $ImportedPipeline | Get-AdfActivity -Name B | Get-AdfDependency
                 $DependencyB | Should -BeNullOrEmpty
             }

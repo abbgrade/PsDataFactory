@@ -1,10 +1,26 @@
+<#
+.SYNOPSIS
+Creates a linked service reference.
+
+.DESCRIPTION
+Creates a reference object containing the linked service name and reference type, with optional parameters.
+
+.OUTPUTS
+System.Management.Automation.PSCustomObject. The linked service reference.
+
+.EXAMPLE
+New-AdfLinkedServiceReference -Name 'StorageLinkedService'
+Creates a reference to the specified linked service.
+#>
 function New-LinkedServiceReference {
     
     [CmdletBinding()]
     param (
+        # The linked service name.
         [Parameter( Mandatory )]
         [string] $Name,
 
+        # Optional parameters to include in the reference.
         [Parameter()]
         [PSCustomObject] $Parameters
     )

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Export-AdfDataset
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Exports a dataset as a JSON file.
 
 ## SYNTAX
 
@@ -18,21 +18,21 @@ Export-AdfDataset [-Dataset] <Object> [-DatasetsDirectory] <DirectoryInfo> [-Pro
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Serializes the dataset to JSON and writes it to a file named after the dataset in the existing destination directory.
+Outputs the resulting file path.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+$dataset | Export-AdfDataset -DatasetsDirectory (Get-Item .\datasets)
+Writes the dataset JSON file to the datasets directory.
+```
 
 ## PARAMETERS
 
 ### -Dataset
-{{ Fill Dataset Description }}
+The dataset to serialize.
 
 ```yaml
 Type: Object
@@ -40,14 +40,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -DatasetsDirectory
-{{ Fill DatasetsDirectory Description }}
+The existing directory in which to write the dataset JSON file.
 
 ```yaml
 Type: DirectoryInfo
@@ -55,7 +55,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -81,11 +81,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Object
-
 ## OUTPUTS
 
-### System.Object
+### System.IO.FileInfo. The path of the exported dataset file.
 ## NOTES
 
 ## RELATED LINKS

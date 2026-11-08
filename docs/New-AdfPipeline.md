@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AdfPipeline
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates an Azure Data Factory pipeline definition.
 
 ## SYNTAX
 
@@ -19,24 +19,38 @@ New-AdfPipeline [-Name] <String> [[-Description] <String>] [[-Activities] <PSObj
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a pipeline object with its name, description, activities, parameters, variables, folder, and generated-pipeline annotation.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+New-AdfPipeline -Name 'DailyLoad' -Description 'Loads daily data'
+Creates a pipeline definition with the specified name and description.
+```
 
 ## PARAMETERS
 
-### -Activities
-{{ Fill Activities Description }}
+### -Name
+The pipeline name.
 
 ```yaml
-Type: PSObject[]
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Description
+The optional pipeline description.
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -47,68 +61,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Description
-{{ Fill Description Description }}
+### -Activities
+The activities to include in the pipeline.
+Defaults to an empty array.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FolderName
-{{ Fill FolderName Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-{{ Fill Name Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Parameters
-{{ Fill Parameters Description }}
-
-```yaml
-Type: PSObject
+Type: PSObject[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: 3
-Default value: None
+Default value: @()
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Variables
-{{ Fill Variables Description }}
+### -Parameters
+The pipeline parameters.
+Defaults to an empty object.
 
 ```yaml
 Type: PSObject
@@ -117,6 +88,37 @@ Aliases:
 
 Required: False
 Position: 4
+Default value: @{}
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Variables
+The pipeline variables.
+Defaults to an empty object.
+
+```yaml
+Type: PSObject
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: @{}
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FolderName
+The optional pipeline folder name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -142,11 +144,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
+### System.Management.Automation.PSCustomObject. The pipeline definition.
 ## NOTES
 
 ## RELATED LINKS

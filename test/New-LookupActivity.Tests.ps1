@@ -19,6 +19,18 @@ Describe New-LookupActivity {
 
             # Assert
             $activity | Should -Not -BeNullOrEmpty
+            $activity.type | Should -Be 'Lookup'
+            $activity.typeProperties.source.type | Should -Be 'AzureSqlSource'
+            $activity.typeProperties.dataset | Should -Be $Source
+            $activity.policy.timeout | Should -Be '0.12:00:00'
+        }
+
+        It 'includes a source query timeout when specified' {
+            # Act
+            $activity = New-AdfLookupActivity -Name MyActivity -Source $Source -SourceType AzureSqlSource -SourceQueryTimeout '00:05:00' -ErrorAction Stop
+
+            # Assert
+            $activity.typeProperties.source.queryTimeout | Should -Be '00:05:00'
         }
     }
 }

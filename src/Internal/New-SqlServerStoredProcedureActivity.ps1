@@ -1,7 +1,18 @@
+<#
+.SYNOPSIS
+Creates the base representation for a SQL Server stored procedure activity.
+
+.DESCRIPTION
+Constructs a SQL Server stored procedure activity object with its standard execution policy, empty dependencies, and user properties.
+
+.OUTPUTS
+System.Management.Automation.PSCustomObject. The activity representation.
+#>
 function New-SqlServerStoredProcedureActivity {
 
     [CmdletBinding()]
     param (
+        # The name assigned to the activity.
         [Parameter( Mandatory )]
         [string] $Name
     )

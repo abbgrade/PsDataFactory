@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AdfParameter
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Adds a parameter definition to a pipeline.
 
 ## SYNTAX
 
@@ -18,36 +18,20 @@ Add-AdfParameter -Pipeline <PSObject> [-Name] <String> [-Type] <String> [-Progre
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Adds a parameter with the specified type to the pipeline's parameters collection.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+$pipeline | Add-AdfParameter -Name 'Environment' -Type 'String'
+Adds a String parameter named Environment.
+```
 
 ## PARAMETERS
 
-### -Name
-{{ Fill Name Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Pipeline
-{{ Fill Pipeline Description }}
+The pipeline to update.
 
 ```yaml
 Type: PSObject
@@ -61,8 +45,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Type
-{{ Fill Type Description }}
+### -Name
+The parameter name.
 
 ```yaml
 Type: String
@@ -71,6 +55,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+The parameter type.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -96,11 +95,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Management.Automation.PSObject
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

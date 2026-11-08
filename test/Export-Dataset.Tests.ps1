@@ -19,6 +19,8 @@ Describe Export-Dataset {
 
             # Assert
             $Path | Should -Exist
+            $Path.Name | Should -Be 'MyDataset.json'
+            (Get-Content -Raw -Path $Path | ConvertFrom-Json).name | Should -Be $Dataset.name
         }
     }
 }

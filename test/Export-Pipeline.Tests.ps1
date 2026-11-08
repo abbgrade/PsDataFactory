@@ -18,6 +18,8 @@ Describe Export-Pipeline {
 
             # Assert
             $Path | Should -Exist
+            $Path.Name | Should -Be 'MyPipeline.json'
+            (Get-Content -Raw -Path $Path | ConvertFrom-Json).name | Should -Be $Pipeline.name
         }
     }
 }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AdfActivity
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Adds an activity to a pipeline.
 
 ## SYNTAX
 
@@ -18,36 +18,21 @@ Add-AdfActivity -Pipeline <PSObject> [-Activity] <PSObject> [-ProgressAction <Ac
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Appends the supplied activity to the pipeline's activities collection.
+The pipeline can be supplied through the pipeline input.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+$pipeline | Add-AdfActivity -Activity $activity
+Adds the activity to the pipeline.
+```
 
 ## PARAMETERS
 
-### -Activity
-{{ Fill Activity Description }}
-
-```yaml
-Type: PSObject
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Pipeline
-{{ Fill Pipeline Description }}
+The pipeline to update.
 
 ```yaml
 Type: PSObject
@@ -58,6 +43,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Activity
+The activity to append to the pipeline.
+
+```yaml
+Type: PSObject
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -81,11 +81,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Management.Automation.PSObject
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

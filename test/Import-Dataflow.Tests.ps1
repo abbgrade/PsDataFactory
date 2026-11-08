@@ -21,5 +21,13 @@ Describe Import-Dataflow {
             $imported | Should -Not -BeNullOrEmpty
             $imported.name | Should -Be 'MyDataflow'
         }
+
+        It 'throws when the data flow file does not exist' {
+            # Arrange
+            $missingDataflowPath = [System.IO.FileInfo]::new((Join-Path $TestDrive 'MissingDataflow.json'))
+
+            # Act
+            { Import-AdfDataflow -DataflowPath $missingDataflowPath } | Should -Throw
+        }
     }
 }

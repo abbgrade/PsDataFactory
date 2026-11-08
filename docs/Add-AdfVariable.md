@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AdfVariable
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Adds a variable definition to a pipeline.
 
 ## SYNTAX
 
@@ -18,51 +18,21 @@ Add-AdfVariable -Pipeline <PSObject> [-Name] <String> [-Type] <String> [-Default
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Adds a variable with the specified type to the pipeline's variables collection.
+If a non-empty default value is provided, it is added to the variable definition.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+$pipeline | Add-AdfVariable -Name 'RecordCount' -Type 'Int'
+Adds an Int variable named RecordCount.
+```
 
 ## PARAMETERS
 
-### -DefaultValue
-{{ Fill DefaultValue Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-{{ Fill Name Description }}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Pipeline
-{{ Fill Pipeline Description }}
+The pipeline to update.
 
 ```yaml
 Type: PSObject
@@ -76,8 +46,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Type
-{{ Fill Type Description }}
+### -Name
+The variable name.
 
 ```yaml
 Type: String
@@ -86,6 +56,36 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+The variable type.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultValue
+An optional default value for the variable.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -111,11 +111,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Management.Automation.PSObject
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

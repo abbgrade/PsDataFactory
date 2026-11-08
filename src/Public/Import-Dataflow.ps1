@@ -4,11 +4,15 @@ function Import-Dataflow {
     Imports a Data Factory data flow definition from a JSON file.
 
     .DESCRIPTION
-    Reads a JSON file and converts its contents to a PowerShell object.
+    Reads a data flow definition from a JSON file and converts the JSON
+    content to PowerShell objects.
 
     .EXAMPLE
     Import-AdfDataflow -DataflowPath .\MyDataflow.json
     Imports the data flow definition from MyDataflow.json.
+
+    .OUTPUTS
+    System.Object
     #>
 
     [CmdletBinding()]

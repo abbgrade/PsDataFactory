@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AdfColumn
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Adds a column definition to a dataset structure.
 
 ## SYNTAX
 
@@ -25,36 +25,21 @@ Add-AdfColumn -Dataset <PSObject> [-Column] <TSqlObject> [-ProgressAction <Actio
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Adds a named column and type to the dataset structure.
+Alternatively, accepts a SQL DAC model column and maps its data type to an Azure Data Factory type when that source type is supported.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+$dataset | Add-AdfColumn -Name 'CustomerId' -Type 'Int32'
+Adds a column definition to the dataset structure.
+```
 
 ## PARAMETERS
 
-### -Column
-{{ Fill Column Description }}
-
-```yaml
-Type: TSqlObject
-Parameter Sets: Column
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Dataset
-{{ Fill Dataset Description }}
+The dataset whose structure is updated.
 
 ```yaml
 Type: PSObject
@@ -69,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{ Fill Name Description }}
+The column name when using the Properties parameter set.
 
 ```yaml
 Type: String
@@ -77,18 +62,33 @@ Parameter Sets: Properties
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Type
-{{ Fill Type Description }}
+The Azure Data Factory column type when using the Properties parameter set.
 
 ```yaml
 Type: String
 Parameter Sets: Properties
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Column
+A SQL DAC model column to map when using the Column parameter set.
+
+```yaml
+Type: TSqlObject
+Parameter Sets: Column
 Aliases:
 
 Required: True
@@ -118,11 +118,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Management.Automation.PSObject
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

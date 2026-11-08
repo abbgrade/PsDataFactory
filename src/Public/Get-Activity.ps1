@@ -1,11 +1,27 @@
+<#
+.SYNOPSIS
+Gets activities from a pipeline.
+
+.DESCRIPTION
+Returns all activities in the pipeline, or only the activity whose name matches the supplied name.
+
+.OUTPUTS
+System.Management.Automation.PSCustomObject. One or more pipeline activities.
+
+.EXAMPLE
+$pipeline | Get-AdfActivity -Name 'CopyToArchive'
+Returns the named activity from the pipeline.
+#>
 function Get-Activity {
 
     [CmdletBinding()]
     param (
+        # The pipeline from which to retrieve activities.
         [Parameter( Mandatory, ValueFromPipeline )]
         [ValidateNotNullOrEmpty()]
         [PsCustomObject] $Pipeline,
 
+        # An optional activity name used to filter the results.
         [Parameter()]
         [string] $Name
     )

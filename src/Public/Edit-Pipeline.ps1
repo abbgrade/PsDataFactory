@@ -1,10 +1,23 @@
+<#
+.SYNOPSIS
+Applies a supported edit operation to a pipeline.
+
+.DESCRIPTION
+Performs the requested operation on the pipeline. The supported operation, InvertDependencies, reverses the direction of dependencies between activities.
+
+.EXAMPLE
+$pipeline | Edit-AdfPipeline -Operation InvertDependencies
+Reverses the pipeline's activity dependencies.
+#>
 function Edit-Pipeline {
 
     [CmdletBinding()]
     param (
+        # The pipeline to edit.
         [Parameter( Mandatory, ValueFromPipeline )]
         $Pipeline,
 
+        # The operation to perform. Currently supported value: InvertDependencies.
         [Parameter( Mandatory )]
         [ValidateSet( 'InvertDependencies' )]
         [string] $Operation

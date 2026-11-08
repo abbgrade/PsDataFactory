@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AdfDependency
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Retrieves the dependencies of a pipeline activity.
 
 ## SYNTAX
 
@@ -17,21 +17,20 @@ Get-AdfDependency [-Activity] <PSObject> [-ProgressAction <ActionPreference>] [<
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Returns the dependsOn collection from the specified pipeline activity, which contains all predecessor activities and their associated conditions.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+$activity | Get-AdfDependency
+Returns all dependencies configured for the activity.
+```
 
 ## PARAMETERS
 
 ### -Activity
-{{ Fill Activity Description }}
+The pipeline activity from which to retrieve dependencies.
 
 ```yaml
 Type: PSObject
@@ -39,7 +38,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -65,11 +64,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Management.Automation.PSObject
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

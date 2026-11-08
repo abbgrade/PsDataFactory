@@ -8,31 +8,31 @@ schema: 2.0.0
 # Remove-AdfDependency
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a dependency from a pipeline activity.
 
 ## SYNTAX
 
 ```
-Remove-AdfDependency [-Activity] <PSObject> [-OnActivity] <Object> [-ProgressAction <ActionPreference>]
+Remove-AdfDependency [-Activity] <PSObject> [-OnActivity] <PSObject> [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Removes the dependency on a specified predecessor activity from the given activity's dependsOn collection.
+If the activity has no remaining dependencies after removal, the dependsOn array is left empty.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### EXAMPLE 1
 ```
-
-{{ Add example description here }}
+$activity | Remove-AdfDependency -OnActivity $predecessorActivity
+Removes the dependency on the specified predecessor activity.
+```
 
 ## PARAMETERS
 
 ### -Activity
-{{ Fill Activity Description }}
+The pipeline activity from which to remove the dependency.
 
 ```yaml
 Type: PSObject
@@ -40,22 +40,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -OnActivity
-{{ Fill OnActivity Description }}
+The predecessor activity to remove as a dependency.
 
 ```yaml
-Type: Object
+Type: PSObject
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -81,11 +81,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Management.Automation.PSObject
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added `Import-Dataflow` to import data flow definitions from JSON files.
+
 ### Changed
 
 - Improved PlatyPS help for dependency and pipeline activity commands.

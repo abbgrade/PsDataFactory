@@ -3,15 +3,25 @@
 Describe Add-Column {
     
     BeforeAll {
-        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -Force -ErrorAction Stop
+        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -ErrorAction Stop
     }
 
-    BeforeEach {
-        $LinkedServiceReference = New-AdfLinkedServiceReference -Name MyLinkedService
-        $Dataset = New-AdfAzureSqlTable -Name MyDataset -TableName MyTable -LinkedServiceReference $LinkedServiceReference
-    }
+    Context UnitTests -Tag UnitTest {
+        BeforeEach {
+            # Arrange
+            $LinkedServiceReference = New-AdfLinkedServiceReference -Name MyLinkedService
+            $Dataset = New-AdfAzureSqlTable -Name MyDataset -TableName MyTable -LinkedServiceReference $LinkedServiceReference
+        }
 
-    It works {
-        $Dataset | Add-AdfColumn -Name MyColumn -Type MyType -ErrorAction Stop
+        It 'adds column to dataset' {
+            # Arrange
+            $columnName = 'MyColumn'
+
+            # Act
+            $Dataset | Add-AdfColumn -Name $columnName -Type MyType -ErrorAction Stop
+
+            # Assert
+            $Dataset.properties.structure | Where-Object name -EQ $columnName | Should -Not -BeNullOrEmpty
+        }
     }
 }

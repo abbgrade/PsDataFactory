@@ -3,16 +3,22 @@
 Describe New-LookupActivity {
     
     BeforeAll {
-        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -Force -ErrorAction Stop
+        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -ErrorAction Stop
     }
 
-    BeforeEach {
-        $Pipeline = New-AdfPipeline -Name MyPipeline -Description Test
-        $LinkedServiceReference = New-AdfLinkedServiceReference -Name MyLinkedService
-        $Source = New-AdfAzureSqlTable -Name MySourceDataset -TableName MyTable -LinkedServiceReference $LinkedServiceReference
-    }
+    Context UnitTests -Tag UnitTest {
+        BeforeEach {
+            # Arrange
+            $LinkedServiceReference = New-AdfLinkedServiceReference -Name MyLinkedService
+            $Source = New-AdfAzureSqlTable -Name MySourceDataset -TableName MyTable -LinkedServiceReference $LinkedServiceReference
+        }
 
-    It works {
-        New-AdfLookupActivity -Name MyAcitivity -Source $Source -SourceType AzureSqlSource -ErrorAction Stop
+        It 'creates lookup activity with Azure SQL source' {
+            # Act
+            $activity = New-AdfLookupActivity -Name MyAcitivity -Source $Source -SourceType AzureSqlSource -ErrorAction Stop
+
+            # Assert
+            $activity | Should -Not -BeNullOrEmpty
+        }
     }
 }

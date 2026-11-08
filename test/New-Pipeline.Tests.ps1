@@ -3,14 +3,30 @@
 Describe New-Pipeline {
     
     BeforeAll {
-        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -Force -ErrorAction Stop
+        Import-Module $PSScriptRoot\..\src\PsDataFactory.psd1 -ErrorAction Stop
     }
 
-    It Works-with-minimum-parameters {
-        New-AdfPipeline -Name MyPipeline -ErrorAction Stop
-    }
+    Context UnitTests -Tag UnitTest {
+        It 'creates pipeline with required name' {
+            # Arrange
+            $pipelineName = 'MyPipeline'
 
-    It Works {
-        New-AdfPipeline -Name MyPipeline -Description Test -ErrorAction Stop
+            # Act
+            $pipeline = New-AdfPipeline -Name $pipelineName -ErrorAction Stop
+
+            # Assert
+            $pipeline | Should -Not -BeNullOrEmpty
+        }
+
+        It 'creates pipeline with description' {
+            # Arrange
+            $pipelineName = 'MyPipeline'
+
+            # Act
+            $pipeline = New-AdfPipeline -Name $pipelineName -Description Test -ErrorAction Stop
+
+            # Assert
+            $pipeline | Should -Not -BeNullOrEmpty
+        }
     }
 }

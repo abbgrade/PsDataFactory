@@ -13,19 +13,25 @@ Gets activities from a pipeline.
 ## SYNTAX
 
 ```
-Get-AdfActivity [-Pipeline] <PSObject> [[-Name] <String>] [-ProgressAction <ActionPreference>]
+Get-AdfActivity [-Pipeline] <PSObject> [[-Name] <String>] [-Recurse] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Returns all activities in the pipeline, or only the activity whose name matches the supplied name.
+Use Recurse to include activities nested in If Condition branches.
 
 ## EXAMPLES
 
 ### EXAMPLE 1
 ```
-$pipeline | Get-AdfActivity -Name 'CopyToArchive'
-Returns the named activity from the pipeline.
+$pipeline = New-AdfPipeline -Name 'MyPipeline'
+$ifCondition = New-AdfIfCondition -Name 'IsReady' -Expression '1=1'
+$activity = New-AdfPipelineActivity -Name 'CopyToArchive' -PipelineName 'ArchivePipeline'
+$ifCondition.typeProperties | Add-Member -NotePropertyName ifTrueActivities -NotePropertyValue @($activity)
+$pipeline | Add-AdfActivity -Activity $ifCondition
+$pipeline | Get-AdfActivity -Recurse
+Returns both the If Condition and its nested CopyToArchive activity.
 ```
 
 ## PARAMETERS
@@ -56,6 +62,21 @@ Aliases:
 Required: False
 Position: 2
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Recurse
+Include activities nested in If Condition branches.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

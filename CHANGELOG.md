@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.0] - 2026-11-09
+
+### Added
+
+- Added the `Recurse` switch to `Get-Activity` to include nested If Condition activities.
+
 ## [0.8.0] - 2026-11-08
 
 ### Added
